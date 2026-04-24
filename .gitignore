@@ -1,0 +1,32 @@
+# COZAM Technologies - Landing Page .gitignore
+
+# Ignorar dependencias y carpetas de configuración
+node_modules/
+.agent/
+design-system/
+.tempmediaStorage/
+
+# Ignorar archivos temporales de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar logs y archivos de debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignorar archivos de medios antiguos (ya que usamos iconos Lucide)
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.svg
+
+# No ignorar los archivos base de la landing
+!index.html
+!style.css
+!script.js
+
+# Asegurar que los assets necesarios se mantengan (si los hubiera en una carpeta assets)
+# !assets/
