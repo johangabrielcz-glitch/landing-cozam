@@ -873,3 +873,91 @@ footer {
 
 .faq-item.active .faq-answer { max-height: 500px; padding-bottom: 1.5rem; opacity: 1; }
 .faq-item.active .faq-question i { transform: rotate(45deg); color: var(--color-primary); }
+
+/* --- MOBILE RESPONSIVENESS FIXES --- */
+
+@media (max-width: 768px) {
+    /* Global */
+    section { padding: 4rem 0 !important; }
+    .container { padding: 0 1.5rem !important; }
+    h2 { font-size: 2rem !important; }
+
+    /* Navbar Mobile Fix */
+    #main-nav {
+        top: 0.5rem;
+        width: 95%;
+        height: 55px;
+    }
+    
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .nav-left, .nav-right {
+        display: none !important; /* Hide links on mobile for ultra-clean look */
+    }
+
+    .logo-wrapper {
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .brand-logo {
+        height: 35px;
+    }
+
+    /* Hero Mobile */
+    .hero { padding-top: 6rem; min-height: auto; }
+    .hero h1 { font-size: 2.2rem !important; }
+    .hero p.lead { font-size: 0.95rem !important; }
+    .hero p.sub-lead { font-size: 0.8rem !important; }
+    .hero-badge { font-size: 0.65rem; padding: 0.4rem 0.8rem; }
+
+    /* Grids to Single Column */
+    .points-grid, 
+    .solutions-grid, 
+    .steps-grid, 
+    .cases-grid, 
+    .calc-results,
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem !important;
+    }
+
+    /* Benefits Bar */
+    .benefits-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    /* Calculator Mobile */
+    .calculator-card { padding: 2rem 1.5rem; border-radius: 20px; }
+    .result-value { font-size: 1.8rem; }
+
+    /* Footer Mobile */
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    
+    .footer-logo-text {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    /* Chat Demo Mobile */
+    .chat-demo-grid { grid-template-columns: 1fr; }
+    .chat-mockup-wrapper { margin-top: 2rem; max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+    h2 { font-size: 1.8rem !important; }
+    .hero h1 { font-size: 1.8rem !important; }
+    .btn { width: 100%; justify-content: center; }
+    .hero-content div { flex-direction: column; width: 100%; }
+}
