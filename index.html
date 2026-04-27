@@ -3,320 +3,416 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COZAM Technologies | Ingeniería de Automatización</title>
+    <title>COZAM Technologies | Automatiza tu atención</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
 
-    <div id="cursor-glow"></div>
-    <div id="scroll-progress" style="position: fixed; top: 0; left: 0; height: 3px; background: var(--color-primary); z-index: 2000; width: 0%; transition: width 0.1s;"></div>
-    <div id="particles-js"></div>
-    <div class="bg-blob" style="top: 10%; right: 5%;"></div>
-    <div class="bg-blob" style="bottom: 10%; left: 5%; background: radial-gradient(circle, rgba(249, 115, 22, 0.05) 0%, transparent 70%);"></div>
-    
-    <!-- Deep Background Details -->
-    <div class="circuit-bg" style="top: 300px; left: -100px;"></div>
-    <div class="circuit-bg" style="top: 1200px; right: -100px; transform: rotate(90deg);"></div>
-    <div class="circuit-bg" style="bottom: 500px; left: -50px; transform: rotate(270deg);"></div>
-
-    <!-- Micro technical elements -->
-    <div class="micro-el" style="top: 15%; right: 20%;"></div>
-    <div class="micro-el" style="top: 35%; left: 15%; animation-delay: 2s;"></div>
-    <div class="micro-el" style="bottom: 25%; right: 15%; animation-delay: 4s;"></div>
-    <div class="micro-el" style="bottom: 45%; left: 10%; animation-delay: 1s;"></div>
-
-    <nav>
-        <div class="nav-glass">
-            <div class="logo" style="display: flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 1.2rem;">
-                <i data-lucide="sparkles" style="color: var(--color-primary);"></i>
-                COZAM
+    <nav id="main-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#soluciones">Soluciones</a></li>
+                </ul>
             </div>
-            <ul style="display: flex; gap: 2rem; list-style: none;">
-                <li><a href="#proceso" style="text-decoration: none; color: var(--color-text); font-weight: 600; font-size: 0.9rem; opacity: 0.7;">Metodología</a></li>
-                <li><a href="#estrategia" style="text-decoration: none; color: var(--color-text); font-weight: 600; font-size: 0.9rem; opacity: 0.7;">Estrategia</a></li>
-                <li><a href="#ecosistema" style="text-decoration: none; color: var(--color-text); font-weight: 600; font-size: 0.9rem; opacity: 0.7;">Ecosistema</a></li>
-                <li><a href="#soluciones" style="text-decoration: none; color: var(--color-text); font-weight: 600; font-size: 0.9rem; opacity: 0.7;">Soluciones</a></li>
-            </ul>
-            <a href="#contacto" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.85rem;">Análisis IA</a>
+            
+            <a href="#" class="logo-wrapper">
+                <img src="logo.png" alt="COZAM Logo" class="brand-logo">
+            </a>
+
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#casos">Casos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <main>
-        <section class="container hero" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding-top: 180px; position: relative; margin-bottom: 4rem;">
-            <div class="sparkle sparkle-fast" style="top: 50px; left: 8%;"></div>
-            <div class="sparkle-cross" style="top: 120px; right: 15%;">✦</div>
-            <div class="sparkle sparkle-slow" style="bottom: 0; left: 35%;"></div>
-            
-            <div class="hero-content reveal">
-                <span style="color: var(--color-primary); font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 1.5rem;">Tecnología para Negocios Locales</span>
-                <h1>Tu tienda en <span class="text-gradient">Piloto Automático</span></h1>
-                <p style="font-size: 1.25rem; color: var(--color-text-muted); margin-bottom: 3rem; max-width: 550px;">Ecosistemas de automatización que transforman WhatsApp y tu web en una fuerza de ventas 24/7 sin errores humanos.</p>
-                <div style="display: flex; gap: 1.5rem;">
-                    <a href="#contacto" class="btn btn-primary">Agendar Auditoría Gratis</a>
-                    <a href="#proceso" class="btn" style="background: white; border: 1px solid #E2E8F0;">Metodología</a>
-                </div>
-            </div>
-
-            <div class="hero-visual reveal">
-                <div class="glass-card" style="transform: perspective(1000px) rotateY(-8deg);">
-                    <div class="sparkle" style="top: 10px; right: 10px;"></div>
-                    <div class="sparkle-cross" style="bottom: 10px; left: 10px;">✦</div>
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 1rem;">
-                        <i data-lucide="message-square" style="color: var(--color-primary); width: 22px;"></i>
-                        <span style="font-weight: 700; font-size: 0.9rem;">Asistente Inteligente</span>
+    <main id="inicio">
+        <section class="hero">
+            <div class="hero-container hero-centered">
+                <div class="hero-content reveal text-center">
+                    <div class="hero-badge" style="margin-left: auto; margin-right: auto;">
+                        <span class="dot"></span>
+                        TECNOLOGÍA QUE TRABAJA POR TI 24/7
                     </div>
-                    <div id="chat-messages" style="height: 180px; overflow: hidden; display: flex; flex-direction: column; gap: 10px;">
-                        <!-- Animated Chat -->
+                    <h1>Automatiza tu atención. <span class="text-light-blue">Escala tu negocio.</span></h1>
+                    <p class="lead" style="margin-left: auto; margin-right: auto;">En COZAM Technologies creamos asistentes virtuales, páginas web y apps que trabajan por ti 24/7.</p>
+                    <p class="sub-lead" style="margin-left: auto; margin-right: auto;">Atiende clientes más rápido, vende más y reduce carga operativa con soluciones hechas a tu medida.</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center;">
+                        <a href="#contacto" class="btn btn-primary">Solicitar demo <i data-lucide="arrow-right"></i></a>
+                        <a href="#soluciones" class="btn btn-outline">Ver soluciones <i data-lucide="chevron-down"></i></a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="marquee-wrapper">
-            <div class="marquee-content">
-                <span class="marquee-item">WHATSAPP AUTOMATION</span>
-                <span class="marquee-item">CUSTOM WEB SYSTEMS</span>
-                <span class="marquee-item">HIGH CONVERSION SALES</span>
-                <span class="marquee-item">E-COMMERCE ENGINEERING</span>
-                <span class="marquee-item">WHATSAPP AUTOMATION</span>
-                <span class="marquee-item">CUSTOM WEB SYSTEMS</span>
-                <span class="marquee-item">HIGH CONVERSION SALES</span>
-                <span class="marquee-item">E-COMMERCE ENGINEERING</span>
-            </div>
-        </div>
-
-        <section id="proceso" class="container">
-            <div style="margin-bottom: 5rem; max-width: 800px; position: relative;">
-                <div class="sparkle-cross" style="top: -20px; left: -40px;">✦</div>
-                <div class="sparkle-fast" style="bottom: 0; right: -50px;"></div>
-                <h2 class="reveal">Nuestra <span class="text-gradient">Metodología</span></h2>
-                <p class="reveal" style="color: var(--color-text-muted); margin-top: 1.5rem; font-size: 1.1rem;">Un proceso de ingeniería refinado para garantizar que cada implementación sea robusta y escalable.</p>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 2.5rem;">
-                <div class="step-item reveal">
-                    <div class="step-num">01</div>
-                    <div>
-                        <h3>Auditoría de Ventas</h3>
-                        <p style="color: var(--color-text-muted); margin-top: 0.5rem; max-width: 600px;">Analizamos tus flujos actuales en WhatsApp y local físico para detectar fugas de clientes.</p>
+        <section class="pain-points">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>¿Tu negocio pierde oportunidades por <span class="text-blue">no responder a tiempo?</span></h2>
+                    <div style="width: 50px; height: 3px; background: var(--color-primary); margin: 1.5rem auto;"></div>
+                </div>
+                <div class="points-grid">
+                    <div class="point-item reveal stagger-1">
+                        <div class="point-icon"><i data-lucide="message-square" size="32"></i></div>
+                        <p style="font-weight: 600;">Clientes escriben y nadie responde</p>
+                    </div>
+                    <div class="point-item reveal stagger-2">
+                        <div class="point-icon"><i data-lucide="clock" size="32"></i></div>
+                        <p style="font-weight: 600;">Respuestas repetitivas que consumen tiempo</p>
+                    </div>
+                    <div class="point-item reveal stagger-3">
+                        <div class="point-icon"><i data-lucide="frown" size="32"></i></div>
+                        <p style="font-weight: 600;">Procesos manuales que frenan el crecimiento</p>
                     </div>
                 </div>
-                <div class="step-item reveal stagger-1">
-                    <div class="step-num">02</div>
-                    <div>
-                        <h3>Arquitectura a Medida</h3>
-                        <p style="color: var(--color-text-muted); margin-top: 0.5rem; max-width: 600px;">Diseñamos la lógica del asistente y la web integrada específicamente para tu inventario.</p>
-                    </div>
+                <div class="resolve-badge reveal">Nosotros lo resolvemos por ti.</div>
+            </div>
+        </section>
+
+        <section id="soluciones" class="solutions">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Soluciones que <span class="text-blue">impulsan tu negocio</span></h2>
+                    <div style="width: 50px; height: 3px; background: var(--color-primary); margin: 1.5rem auto;"></div>
                 </div>
-                <div class="step-item reveal stagger-2">
-                    <div class="step-num">03</div>
-                    <div>
-                        <h3>Despliegue y Soporte</h3>
-                        <p style="color: var(--color-text-muted); margin-top: 0.5rem; max-width: 600px;">Lanzamos el sistema y monitoreamos el rendimiento para asegurar un uptime del 100%.</p>
+                <div class="solutions-grid">
+                    <div class="solution-card reveal stagger-1">
+                        <div class="sol-icon whatsapp"><i data-lucide="message-circle"></i></div>
+                        <h3>Asistentes virtuales para WhatsApp</h3>
+                        <p>Automatiza respuestas, califica clientes y atiende 24/7 sin esfuerzo.</p>
+                        <ul class="features-list">
+                            <li><i data-lucide="check-circle-2"></i> Integración con WhatsApp</li>
+                            <li><i data-lucide="check-circle-2"></i> Respuestas inteligentes</li>
+                            <li><i data-lucide="check-circle-2"></i> Calificación de leads</li>
+                            <li><i data-lucide="check-circle-2"></i> Escalamiento a humanos</li>
+                        </ul>
+                        <a href="#" class="learn-more">Conocer más <i data-lucide="arrow-right" size="16"></i></a>
+                    </div>
+                    <div class="solution-card reveal stagger-2">
+                        <div class="sol-icon web"><i data-lucide="globe"></i></div>
+                        <h3>Páginas web profesionales</h3>
+                        <p>Tu negocio necesita presencia digital que convierta.</p>
+                        <ul class="features-list">
+                            <li><i data-lucide="check-circle-2"></i> Diseño moderno y atractivo</li>
+                            <li><i data-lucide="check-circle-2"></i> Optimización móvil</li>
+                            <li><i data-lucide="check-circle-2"></i> Creadas para vender</li>
+                            <li><i data-lucide="check-circle-2"></i> Fáciles de administrar</li>
+                        </ul>
+                        <a href="#" class="learn-more">Conocer más <i data-lucide="arrow-right" size="16"></i></a>
+                    </div>
+                    <div class="solution-card reveal stagger-3">
+                        <div class="sol-icon app"><i data-lucide="code-2"></i></div>
+                        <h3>Aplicaciones web a medida</h3>
+                        <p>Digitaliza procesos y mejora la eficiencia de tu empresa.</p>
+                        <ul class="features-list">
+                            <li><i data-lucide="check-circle-2"></i> Sistemas internos</li>
+                            <li><i data-lucide="check-circle-2"></i> Paneles administrativos</li>
+                            <li><i data-lucide="check-circle-2"></i> Automatización de procesos</li>
+                            <li><i data-lucide="check-circle-2"></i> Seguras y escalables</li>
+                        </ul>
+                        <a href="#" class="learn-more">Conocer más <i data-lucide="arrow-right" size="16"></i></a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="estrategia" class="container">
-            <div style="text-align: center; margin-bottom: 5rem; position: relative;">
-                <div class="sparkle-cross" style="top: -10px; right: 30%;">✦</div>
-                <h2 class="reveal">Elige tu <span class="text-gradient">Enfoque</span></h2>
-                <p style="color: var(--color-text-muted); margin-top: 1rem;">Selecciona la estrategia prioritaria para tu negocio.</p>
+        <section class="benefits-bar">
+            <div class="benefits-container reveal">
+                <div class="benefit-item"><i data-lucide="zap"></i> Respuestas inmediatas</div>
+                <div class="benefit-item"><i data-lucide="trending-up"></i> Más conversiones</div>
+                <div class="benefit-item"><i data-lucide="clock"></i> Ahorro de tiempo</div>
+                <div class="benefit-item"><i data-lucide="smile"></i> Mejor experiencia del cliente</div>
+                <div class="benefit-item"><i data-lucide="shield-check"></i> Presencia digital sólida</div>
             </div>
+        </section>
 
-            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start;">
-                <div style="display: flex; flex-direction: column; gap: 1rem;" class="reveal">
-                    <button class="strategy-btn active" onclick="selectStrategy('ventas')">
-                        <i data-lucide="trending-up"></i> Enfoque en Ventas
-                    </button>
-                    <button class="strategy-btn" onclick="selectStrategy('soporte')">
-                        <i data-lucide="headphones"></i> Enfoque en Soporte
-                    </button>
-                    <button class="strategy-btn" onclick="selectStrategy('inventario')">
-                        <i data-lucide="package"></i> Enfoque en Inventario
-                    </button>
+        <section class="chat-demo">
+            <div class="chat-demo-grid">
+                <div class="chat-demo-content reveal">
+                    <h2>Mira cómo un cliente puede ser atendido <span class="text-blue">automáticamente en segundos.</span></h2>
+                    <div style="width: 50px; height: 3px; background: var(--color-primary); margin: 1.5rem 0 2rem;"></div>
+                    <ul class="features-list" style="font-size: 1.1rem; gap: 1.5rem;">
+                        <li><i data-lucide="clock"></i> Atención 24/7</li>
+                        <li><i data-lucide="message-square"></i> Respuestas inteligentes</li>
+                        <li><i data-lucide="users"></i> Más clientes satisfechos</li>
+                    </ul>
                 </div>
-                <div id="strategy-result" class="strategy-card reveal stagger-1">
-                    <div class="sparkle-fast" style="top: 20px; right: 20px;"></div>
-                    <h3 id="strategy-title" style="margin-bottom: 1rem;">Estrategia de Ventas Agresiva</h3>
-                    <p id="strategy-desc" style="color: var(--color-text-muted); margin-bottom: 2rem;">Optimizamos el bot para cierres rápidos, recuperación de carritos y ofertas relámpago automáticas.</p>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                        <div>
-                            <div style="font-size: 2rem; font-weight: 800; color: var(--color-primary);" id="strategy-stat-1">+55%</div>
-                            <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; opacity: 0.6;">Conversión</div>
+                <div class="chat-mockup-wrapper reveal">
+                    <div class="chat-content" id="chat-demo-container">
+                        <!-- Chat messages will be injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="metodologia" class="methodology">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Así <span class="text-blue">trabajamos</span></h2>
+                    <div style="width: 50px; height: 3px; background: var(--color-primary); margin: 1.5rem auto;"></div>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card reveal stagger-1">
+                        <div class="step-number">1</div>
+                        <h3>Entendemos tu negocio</h3>
+                        <p>Escuchamos tus necesidades y objetivos para ofrecerte la mejor solución.</p>
+                    </div>
+                    <div class="step-card reveal stagger-2">
+                        <div class="step-number">2</div>
+                        <h3>Diseñamos la solución</h3>
+                        <p>Creamos un plan personalizado pensado para tus procesos y tus clientes.</p>
+                    </div>
+                    <div class="step-card reveal stagger-3">
+                        <div class="step-number">3</div>
+                        <h3>Implementamos y automatizamos</h3>
+                        <p>Desarrollamos, integramos y ponemos todo en marcha.</p>
+                    </div>
+                    <div class="step-card reveal stagger-1">
+                        <div class="step-number">4</div>
+                        <h3>Acompañamos tu crecimiento</h3>
+                        <p>Seguimiento, soporte y mejoras continuas para que sigas escalando.</p>
+                    </div>
+                </div>
+                <div class="resolve-badge reveal" style="background: white; border-color: #E2E8F0; color: var(--color-primary);">No vendemos tecnología. Creamos soluciones que funcionan.</div>
+            </div>
+        </section>
+
+        <section id="casos" class="cases">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Casos de <span class="text-blue">Éxito</span></h2>
+                    <div style="width: 50px; height: 3px; background: var(--color-primary); margin: 1.5rem auto;"></div>
+                </div>
+                <div class="cases-grid">
+                    <div class="case-card reveal stagger-1">
+                        <div class="case-image" style="background: linear-gradient(135deg, #0052FF, #00C2FF);">
+                            <i data-lucide="bot" size="48" color="white"></i>
                         </div>
-                        <div>
-                            <div style="font-size: 2rem; font-weight: 800; color: var(--color-secondary);" id="strategy-stat-2">24/7</div>
-                            <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; opacity: 0.6;">Cierre Automático</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="ecosistema" class="container" style="background: rgba(248, 250, 252, 0.4); border-radius: 60px; padding: 6rem 4rem; position: relative; margin: 4rem auto;">
-            <div class="sparkle" style="top: 40px; right: 100px;"></div>
-            <div style="text-align: center; margin-bottom: 5rem;">
-                <h2 class="reveal">Ecosistema en <span class="text-gradient">Tiempo Real</span></h2>
-                <p style="color: var(--color-text-muted); margin-top: 1rem;">Interactúa con los nodos para ver el flujo de datos.</p>
-            </div>
-
-            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; position: relative; max-width: 900px; margin: 0 auto;">
-                <div class="eco-node reveal" title="Cliente envía mensaje">
-                    <i data-lucide="message-circle" style="color: #25D366;"></i>
-                    <div class="sparkle-fast" style="position: absolute; top: -10px; right: -10px;"></div>
-                </div>
-                <div class="eco-line"></div>
-                <div class="eco-node reveal stagger-1" title="IA Procesando">
-                    <i data-lucide="cpu" style="color: var(--color-primary);"></i>
-                </div>
-                <div class="eco-line"></div>
-                <div class="eco-node reveal stagger-2" title="Pedido en Inventario">
-                    <i data-lucide="database" style="color: var(--color-secondary);"></i>
-                </div>
-                <div class="eco-line"></div>
-                <div class="eco-node reveal stagger-3" title="Venta Finalizada">
-                    <i data-lucide="check-circle" style="color: #16A34A;"></i>
-                    <div class="sparkle-cross" style="position: absolute; top: -10px; right: -10px;">✦</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="configurador" class="container">
-            <div class="widget-container reveal">
-                <div class="sparkle-fast" style="top: 20px; left: 20px;"></div>
-                <div class="sparkle-cross" style="bottom: 20px; right: 20px;">✦</div>
-                <div>
-                    <h2 style="margin-bottom: 1.5rem;">Simula tu <span class="text-gradient">Crecimiento</span></h2>
-                    <p style="color: var(--color-text-muted); margin-bottom: 2.5rem;">Activa los módulos para alcanzar el 100% de eficiencia.</p>
-                    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-                        <label style="display: flex; align-items: center; gap: 1.25rem; cursor: pointer; padding: 1.5rem; background: white; border-radius: 24px; border: 1px solid #E2E8F0; transition: var(--transition);">
-                            <input type="checkbox" class="config-check" value="35" style="width: 20px; height: 20px;">
-                            <div>
-                                <strong style="font-size: 1rem;">Automatización WhatsApp</strong>
-                                <div style="font-size: 0.85rem; color: #16A34A;">+35% Retención de Leads</div>
+                        <div class="case-body">
+                            <span class="case-tag">Telecomunicaciones (ISP)</span>
+                            <h3>Atención Inteligente & CZ Desk</h3>
+                            <p>Chatbot inteligente integrado al CRM CZ Desk de COZAM.</p>
+                            <div class="case-stats">
+                                <div><strong>+50%</strong> Auto-resolución</div>
+                                <div><strong>100%</strong> Integración CRM</div>
                             </div>
-                        </label>
-                        <label style="display: flex; align-items: center; gap: 1.25rem; cursor: pointer; padding: 1.5rem; background: white; border-radius: 24px; border: 1px solid #E2E8F0; transition: var(--transition);">
-                            <input type="checkbox" class="config-check" value="45" style="width: 20px; height: 20px;">
-                            <div>
-                                <strong style="font-size: 1rem;">E-commerce Sincronizado</strong>
-                                <div style="font-size: 0.85rem; color: var(--color-primary);">+45% Ventas Autónomas</div>
+                            <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 1rem;">Resolución automática masiva y delegación eficiente a humanos mediante CZ Desk.</p>
+                        </div>
+                    </div>
+                    <div class="case-card reveal stagger-2">
+                        <div class="case-image" style="background: linear-gradient(135deg, #7C3AED, #C084FC);">
+                            <i data-lucide="smartphone" size="48" color="white"></i>
+                        </div>
+                        <div class="case-body">
+                            <span class="case-tag">App Móvil</span>
+                            <h3>App de Autogestión ISP</h3>
+                            <p>Plataforma para que clientes gestionen su servicio sin intervención.</p>
+                            <div class="case-stats">
+                                <div><strong>Auto-Gestión</strong> Facturas & Info</div>
+                                <div><strong>Pagos</strong> Registro Online</div>
                             </div>
-                        </label>
-                        <label style="display: flex; align-items: center; gap: 1.25rem; cursor: pointer; padding: 1.5rem; background: white; border-radius: 24px; border: 1px solid #E2E8F0; transition: var(--transition);">
-                            <input type="checkbox" class="config-check" value="20" style="width: 20px; height: 20px;">
-                            <div>
-                                <strong style="font-size: 1rem;">Soporte Predictivo IA</strong>
-                                <div style="font-size: 0.85rem; color: #8B5CF6;">+20% Eficiencia Final</div>
+                            <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 1rem;">Consulta de deudas, facturas y registro de pagos 100% digital.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="calculadora" class="calculator">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Calcula tu <span class="text-blue">Potencial de Ahorro</span></h2>
+                    <p>Descubre cuánto tiempo y dinero puedes ahorrar automatizando tus procesos.</p>
+                </div>
+                <div class="calculator-card reveal">
+                    <div class="calc-input-group">
+                        <label for="leads-range">Prospectos mensuales: <span id="leads-value">100</span></label>
+                        <input type="range" id="leads-range" min="10" max="1000" value="100" class="slider">
+                    </div>
+                    <div class="calc-results">
+                        <div class="result-item">
+                            <span class="result-label">Horas ahorradas al mes</span>
+                            <span class="result-value" id="hours-saved">25</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Valor estimado de ahorro</span>
+                            <span class="result-value" id="money-saved">$250</span>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="#contacto" class="btn btn-primary">¡Quiero empezar a ahorrar!</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Preguntas <span class="text-blue">Frecuentes</span></h2>
+                    <div style="width: 50px; height: 3px; background: var(--color-primary); margin: 1.5rem auto;"></div>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Cómo funciona la integración con WhatsApp?</h3>
+                            <i data-lucide="plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Utilizamos la API oficial de WhatsApp Business para crear flujos automatizados que responden de forma instantánea a tus clientes, califican leads e incluso agendan citas directamente en tu calendario.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Necesito conocimientos técnicos?</h3>
+                            <i data-lucide="plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Para nada. Nosotros nos encargamos de todo el desarrollo, configuración e integración. Tú solo recibirás los leads ya calificados y listos para cerrar la venta.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Cuánto tiempo toma la implementación?</h3>
+                            <i data-lucide="plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Dependiendo de la complejidad, una solución estándar puede estar lista en un plazo de 7 a 15 días hábiles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="contacto" class="contact">
+            <div class="container">
+                <div class="contact-card reveal premium-contact">
+                    <div class="contact-info-new">
+                        <div class="contact-badge">HABLEMOS</div>
+                        <h2>¿Listo para <span class="text-blue">transformar</span> tu negocio?</h2>
+                        <p>Nuestro equipo de expertos en automatización está listo para ayudarte a escalar.</p>
+                        <div class="contact-features-mini">
+                            <div class="mini-feature">
+                                <i data-lucide="check-circle" color="var(--color-secondary)"></i>
+                                <span>Diagnóstico gratuito</span>
                             </div>
-                        </label>
-                    </div>
-                </div>
-                <div style="text-align: center; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100%;">
-                    <div class="score-circle">
-                        <span id="score-value">0</span>%
-                    </div>
-                    <h3 style="margin-top: 2rem;">Eficiencia Operativa</h3>
-                    <p style="color: var(--color-text-muted); margin-top: 1rem;">Tu negocio operando de forma 100% independiente.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="soluciones" class="container">
-            <div style="text-align: center; margin-bottom: 5rem; position: relative;">
-                <div class="sparkle-slow" style="top: -30px; right: 15%;"></div>
-                <div class="sparkle-cross" style="bottom: 0; left: 10%;">✦</div>
-                <h2 class="reveal">Soluciones Integrales</h2>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
-                <div class="glass-card reveal">
-                    <div class="sparkle" style="top: 20px; right: 20px;"></div>
-                    <div style="width: 60px; height: 60px; background: rgba(14, 165, 233, 0.1); color: var(--color-primary); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;"><i data-lucide="message-circle" size="32"></i></div>
-                    <h3>Bots de WhatsApp</h3>
-                    <p style="color: var(--color-text-muted);">Inteligencia que entiende pedidos, muestra fotos y cierra ventas de forma autónoma.</p>
-                </div>
-                <div class="glass-card reveal stagger-1">
-                    <div class="sparkle-cross" style="bottom: 20px; left: 20px;">✦</div>
-                    <div style="width: 60px; height: 60px; background: rgba(249, 115, 22, 0.1); color: var(--color-secondary); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;"><i data-lucide="shopping-bag" size="32"></i></div>
-                    <h3>Webs de Alta Carga</h3>
-                    <p style="color: var(--color-text-muted);">Tiendas online optimizadas para que tus clientes locales compren con un solo click.</p>
-                </div>
-                <div class="glass-card reveal stagger-2">
-                    <div class="sparkle" style="top: 40px; left: 40px; animation-delay: 1s;"></div>
-                    <div style="width: 60px; height: 60px; background: rgba(139, 92, 246, 0.1); color: #8B5CF6; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;"><i data-lucide="layout-dashboard" size="32"></i></div>
-                    <h3>Sistemas Core</h3>
-                    <p style="color: var(--color-text-muted);">Software de control administrativo para dueños que exigen reportes y gestión masiva.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="trayectoria" class="container">
-            <div style="background: var(--color-text); color: white; border-radius: 60px; padding: 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; position: relative; overflow: hidden;">
-                <div class="sparkle" style="top: 40px; left: 40px;"></div>
-                <div class="sparkle-cross" style="bottom: 40px; right: 40px;">✦</div>
-                <div style="position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: var(--color-primary); filter: blur(150px); opacity: 0.1;"></div>
-                <div class="reveal">
-                    <h2 style="color: white; font-size: 2.8rem; margin-bottom: 2rem;">Validado por la Industria</h2>
-                    <p style="opacity: 0.7; font-size: 1.1rem; margin-bottom: 3rem;">Aplicamos la misma rigurosidad técnica en tiendas locales que en sistemas core como VIDANET.</p>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
-                        <div>
-                            <h3 style="color: var(--color-primary); font-size: 3.5rem;">+250k</h3>
-                            <p style="opacity: 0.6; font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">Transacciones</p>
-                        </div>
-                        <div>
-                            <h3 style="color: var(--color-secondary); font-size: 3.5rem;">100%</h3>
-                            <p style="opacity: 0.6; font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">Uptime</p>
+                            <div class="mini-feature">
+                                <i data-lucide="check-circle" color="var(--color-secondary)"></i>
+                                <span>Demo personalizada</span>
+                            </div>
+                            <div class="mini-feature">
+                                <i data-lucide="check-circle" color="var(--color-secondary)"></i>
+                                <span>Soporte 24/7</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 2rem;" class="reveal stagger-1">
-                    <div class="glass-card" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); padding: 2.5rem;">
-                        <h4 style="color: white; font-size: 1.4rem; margin-bottom: 0.5rem;">VIDANET</h4>
-                        <p style="color: rgba(255,255,255,0.6);">Arquitectura distribuida para servicios financieros.</p>
-                    </div>
-                    <div class="glass-card" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); padding: 2.5rem;">
-                        <h4 style="color: white; font-size: 1.4rem; margin-bottom: 0.5rem;">CZ DESK</h4>
-                        <p style="color: rgba(255,255,255,0.6);">Gestión masiva de atención omnicanal.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contacto" class="container">
-            <div style="max-width: 900px; margin: 0 auto;" class="reveal">
-                <div class="glass-card" style="text-align: center; border-radius: 50px;">
-                    <div class="sparkle-fast" style="top: 30px; left: 30px;"></div>
-                    <div class="sparkle-cross" style="bottom: 30px; right: 30px;">✦</div>
-                    <h2 style="margin-bottom: 1.5rem;">Escala tu negocio hoy</h2>
-                    <p style="color: var(--color-text-muted); margin-bottom: 3.5rem;">Solicita una consultoría técnica gratuita.</p>
-                    <form id="leadForm">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-                            <input type="text" placeholder="Tu Nombre" required style="width: 100%; padding: 1.25rem; border-radius: 20px; border: 1px solid #E2E8F0; outline: none; font-family: inherit;">
-                            <input type="text" placeholder="Nombre del Local" required style="width: 100%; padding: 1.25rem; border-radius: 20px; border: 1px solid #E2E8F0; outline: none; font-family: inherit;">
+                    <form class="contact-form-new">
+                        <div class="form-row">
+                            <div class="form-group-new">
+                                <input type="text" id="name" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="form-group-new">
+                                <input type="email" id="email" placeholder="Correo corporativo" required>
+                            </div>
                         </div>
-                        <input type="tel" placeholder="WhatsApp de contacto" required style="width: 100%; padding: 1.25rem; border-radius: 20px; border: 1px solid #E2E8F0; outline: none; font-family: inherit; margin-bottom: 2.5rem;">
-                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 1.5rem;">Solicitar Análisis <i data-lucide="zap"></i></button>
+                        <div class="form-group-new">
+                            <select id="interest">
+                                <option value="" disabled selected>Me interesa...</option>
+                                <option value="bot">Asistente Virtual</option>
+                                <option value="web">Página Web / App</option>
+                                <option value="crm">CZ Desk / CRM</option>
+                                <option value="otro">Otro Proyecto</option>
+                            </select>
+                        </div>
+                        <div class="form-group-new">
+                            <textarea placeholder="¿En qué podemos ayudarte?" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-glow">Enviar Solicitud <i data-lucide="send" size="18"></i></button>
                     </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="legal" class="contact" style="padding: 4rem 0; background: #F8FAFC; border-top: 1px solid #E2E8F0;">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 2rem;">Aviso <span class="text-blue">Legal</span></h2>
+                    <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 2rem;">
+                        En COZAM Technologies nos tomamos en serio tu privacidad y la seguridad de tus datos. 
+                        Todas nuestras soluciones cumplen con los estándares internacionales de protección de la información.
+                    </p>
+                    <div style="display: flex; gap: 2rem; justify-content: center;">
+                        <a href="#contacto" class="btn btn-outline" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Política de Privacidad</a>
+                        <a href="#contacto" class="btn btn-outline" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Términos de Servicio</a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="container" style="padding: 5rem 0; text-align: center; border-top: 1px solid #F1F5F9; position: relative;">
-        <div class="sparkle-slow" style="top: 30px; left: 15%;"></div>
-        <div class="sparkle-fast" style="bottom: 30px; right: 15%;"></div>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; font-weight: 800; font-size: 1.5rem; margin-bottom: 2rem;">
-            <i data-lucide="sparkles" style="color: var(--color-primary);"></i>
-            COZAM
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col reveal stagger-1">
+                <a href="#" class="logo-wrapper" style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="logo.png" alt="Logo" style="height: 35px; width: auto; object-fit: contain;">
+                    CZ COZAM Technologies
+                </a>
+                <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-bottom: 1.5rem;">Soluciones tecnológicas que impulsan tu negocio.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" style="color: white;"><i data-lucide="facebook" size="20"></i></a>
+                    <a href="#" style="color: white;"><i data-lucide="instagram" size="20"></i></a>
+                    <a href="#" style="color: white;"><i data-lucide="linkedin" size="20"></i></a>
+                </div>
+            </div>
+            <div class="footer-col reveal stagger-2">
+                <h4>Soluciones</h4>
+                <ul>
+                    <li><a href="#soluciones">Asistentes Virtuales</a></li>
+                    <li><a href="#soluciones">Páginas Web</a></li>
+                    <li><a href="#soluciones">Apps Web</a></li>
+                    <li><a href="#soluciones">Integraciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-col reveal stagger-3">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#metodologia">Nosotros</a></li>
+                    <li><a href="#casos">Casos de Éxito</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col reveal stagger-1">
+                <h4>Contacto</h4>
+                <ul style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">
+                    <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="phone" size="16"></i> +51 987 654 321</li>
+                    <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="mail" size="16"></i> hola@cozamtech.com</li>
+                    <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="map-pin" size="16"></i> Lima, Perú</li>
+                </ul>
+            </div>
         </div>
-        <p style="color: var(--color-text-muted); font-size: 0.9rem;">&copy; 2024 COZAM Technologies. Ingeniería Local, Visión Global.</p>
+        <div class="footer-bottom">
+            <div class="footer-logo-text">
+                <img src="logo.png" alt="Logo" class="footer-logo">
+                <p>&copy; 2024 COZAM Technologies. Todos los derechos reservados.</p>
+            </div>
+            <div style="display: flex; gap: 1.5rem;">
+                <a href="#legal" style="color: inherit; text-decoration: none;">Política de privacidad</a>
+                <a href="#legal" style="color: inherit; text-decoration: none;">Términos y condiciones</a>
+            </div>
+        </div>
     </footer>
 
+    <a href="#" class="whatsapp-float floating">
+        <i data-lucide="message-circle"></i>
+    </a>
+
     <script src="script.js"></script>
-    <script>lucide.createIcons();</script>
 </body>
 </html>
