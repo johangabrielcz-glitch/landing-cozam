@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COZAM Technologies | Automatiza tu atención</title>
+    <meta name="description" content="COZAM Technologies: Asistentes virtuales, páginas web y apps que automatizan tu negocio 24/7. Soluciones de IA para ISPs y empresas en Venezuela.">
+    <meta name="keywords" content="automatización, chatbot, WhatsApp, ISP, inteligencia artificial, COZAM, Venezuela">
+    <meta property="og:title" content="COZAM Technologies | Automatiza tu atención">
+    <meta property="og:description" content="Asistentes virtuales, páginas web y apps que trabajan por ti 24/7.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
+    <div id="scroll-progress"></div>
+    <div id="mouse-glow"></div>
 
     <nav id="main-nav">
         <div class="nav-container">
             <div class="nav-left">
                 <ul class="nav-links">
                     <li><a href="#soluciones">Soluciones</a></li>
-                    <li><a href="#metodo">Metodo</a></li>
+                    <li><a href="#metodo">Método</a></li>
                 </ul>
             </div>
             
@@ -32,27 +41,43 @@
     </nav>
 
     <main id="inicio">
-        <section class="hero">
+        <section class="hero" data-nav-theme="dark">
+            <canvas id="particle-canvas"></canvas>
+            <div class="hero-grid-pattern"></div>
             <div class="bg-blob" style="top: 20%; left: -10%; background: radial-gradient(circle, var(--color-primary-glow) 0%, transparent 70%);"></div>
             <div class="bg-blob" style="bottom: 10%; right: -5%; background: radial-gradient(circle, var(--color-secondary-glow) 0%, transparent 70%); animation-delay: -5s;"></div>
             <div class="hero-container hero-centered">
                 <div class="hero-content reveal text-center">
-                    <div class="hero-badge" style="margin-left: auto; margin-right: auto;">
+                    <div class="hero-badge">
                         <span class="dot"></span>
                         TECNOLOGÍA QUE TRABAJA POR TI 24/7
                     </div>
-                    <h1>Automatiza tu atención. <span class="text-light-blue">Escala tu negocio.</span></h1>
-                    <p class="lead" style="margin-left: auto; margin-right: auto;">En COZAM Technologies creamos asistentes virtuales, páginas web y apps que trabajan por ti 24/7.</p>
-                    <p class="sub-lead" style="margin-left: auto; margin-right: auto;">Atiende clientes más rápido, vende más y reduce carga operativa con soluciones hechas a tu medida.</p>
+                    <h1 class="gradient-text">Automatiza tu atención.<br><span class="shimmer-text">Escala tu negocio.</span></h1>
+                    <p class="lead">Creamos soluciones de IA que trabajan por ti 24/7.</p>
+                    <p class="sub-lead typing-line"><span id="typing-text"></span><span class="cursor-blink">|</span></p>
                     <div style="display: flex; gap: 1rem; justify-content: center;">
                         <a href="#contacto" class="btn btn-primary">Solicitar demo <i data-lucide="arrow-right"></i></a>
                         <a href="#soluciones" class="btn btn-outline">Ver soluciones <i data-lucide="chevron-down"></i></a>
+                    </div>
+                    <div class="hero-stats" style="justify-content: center;">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="500">0</span>
+                            <span>Consultas atendidas</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="98">0</span><span style="color: var(--color-secondary); font-size:2.2rem; font-weight:800;">%</span>
+                            <span>Satisfacción</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="24">0</span><span style="color: var(--color-secondary); font-size:2.2rem; font-weight:800;">/7</span>
+                            <span>Disponibilidad</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="marquee-wrapper">
+        <div class="marquee-wrapper" data-nav-theme="dark">
             <div class="marquee-content">
                 <div class="marquee-item"><i data-lucide="zap"></i> Potencia tu negocio</div>
                 <div class="marquee-item"><i data-lucide="cpu"></i> Inteligencia Artificial</div>
@@ -66,7 +91,7 @@
             </div>
         </div>
 
-        <section id="problemas" class="pain-points">
+        <section id="problemas" class="pain-points" data-nav-theme="light">
             <div class="bg-blob" style="top: 0; right: -10%; opacity: 0.3;"></div>
             <div class="container">
                 <div class="section-header reveal">
@@ -91,7 +116,7 @@
             </div>
         </section>
 
-        <section id="soluciones" class="solutions">
+        <section id="soluciones" class="solutions" data-nav-theme="light">
             <div class="bg-blob" style="bottom: 0; left: -10%; opacity: 0.3; background: radial-gradient(circle, var(--color-secondary-glow) 0%, transparent 70%);"></div>
             <div class="container">
                 <div class="section-header reveal">
@@ -139,7 +164,7 @@
             </div>
         </section>
 
-        <div class="marquee-wrapper marquee-dark">
+        <div class="marquee-wrapper marquee-dark" data-nav-theme="dark">
             <div class="marquee-content" style="animation-direction: reverse;">
                 <div class="marquee-item"><i data-lucide="trending-up"></i> Resultados Garantizados</div>
                 <div class="marquee-item"><i data-lucide="users"></i> Clientes Satisfechos</div>
@@ -153,7 +178,7 @@
             </div>
         </div>
 
-        <section class="chat-demo">
+        <section class="chat-demo" data-nav-theme="light">
             <div class="chat-demo-grid">
                 <div class="chat-demo-content reveal">
                     <h2>Mira cómo un cliente puede ser atendido <span class="text-blue">automáticamente en segundos.</span></h2>
@@ -172,7 +197,7 @@
             </div>
         </section>
 
-        <section id="metodo" class="methodology">
+        <section id="metodo" class="methodology" data-nav-theme="light">
             <div class="container">
                 <div class="section-header reveal">
                     <h2>Así <span class="text-blue">trabajamos</span></h2>
@@ -204,7 +229,7 @@
             </div>
         </section>
 
-        <div class="marquee-wrapper marquee-dark">
+        <div class="marquee-wrapper marquee-dark" data-nav-theme="dark">
             <div class="marquee-content" style="animation-direction: reverse; animation-duration: 40s;">
                 <div class="marquee-item"><i data-lucide="globe"></i> Presencia Global</div>
                 <div class="marquee-item"><i data-lucide="code-2"></i> Desarrollo Premium</div>
@@ -218,7 +243,7 @@
             </div>
         </div>
 
-        <section id="casos" class="cases">
+        <section id="casos" class="cases" data-nav-theme="light">
             <div class="container">
                 <div class="section-header reveal">
                     <h2>Casos de <span class="text-blue">Éxito</span></h2>
@@ -259,7 +284,40 @@
             </div>
         </section>
 
-        <section id="calculadora" class="calculator">
+        <section id="fundador" class="founder" data-nav-theme="dark">
+            <div class="container">
+                <div class="founder-grid">
+                    <div class="founder-image-wrapper reveal">
+                        <div class="founder-image-glow"></div>
+                        <img src="founder.png" alt="Johan Contreras - Fundador de COZAM" class="founder-image">
+                    </div>
+                    <div class="founder-content reveal" style="transition-delay: 0.12s;">
+                        <div class="founder-badge">
+                            <i data-lucide="user" size="14"></i>
+                            Fundador & CEO
+                        </div>
+                        <h2 class="founder-name">Johan Contreras</h2>
+                        <p class="founder-title">Builder · Desarrollador · Visionario</p>
+                        <p class="founder-quote">
+                            &ldquo;Creo que la tecnología bien aplicada puede transformar cualquier negocio, sin importar su tamaño. COZAM nació de esa idea: llevar automatización real a empresas que lo necesitan.&rdquo;
+                        </p>
+                        <div class="founder-skills">
+                            <span class="skill-badge"><i data-lucide="cpu" size="13"></i> Inteligencia Artificial</span>
+                            <span class="skill-badge"><i data-lucide="code-2" size="13"></i> Desarrollo Full Stack</span>
+                            <span class="skill-badge"><i data-lucide="palette" size="13"></i> Diseño UX/UI</span>
+                            <span class="skill-badge"><i data-lucide="zap" size="13"></i> Automatización</span>
+                            <span class="skill-badge"><i data-lucide="bot" size="13"></i> Chatbots</span>
+                        </div>
+                        <div class="founder-cta">
+                            <a href="#contacto" class="btn btn-primary">Trabajar con Johan <i data-lucide="arrow-right"></i></a>
+                            <a href="mailto:johangabriel.cz@gmail.com" class="btn btn-outline">Enviar email</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="calculadora" class="calculator" data-nav-theme="dark">
             <div class="container">
                 <div class="section-header reveal">
                     <h2>Calcula tu <span class="text-blue">Potencial de Ahorro</span></h2>
@@ -287,7 +345,7 @@
             </div>
         </section>
 
-        <div class="marquee-wrapper">
+        <div class="marquee-wrapper" data-nav-theme="dark">
             <div class="marquee-content">
                 <div class="marquee-item">Preguntas Frecuentes</div>
                 <div class="marquee-item">Soporte Técnico</div>
@@ -301,7 +359,7 @@
             </div>
         </div>
 
-        <section id="faq" class="faq">
+        <section id="faq" class="faq" data-nav-theme="light">
             <div class="container">
                 <div class="section-header reveal">
                     <h2>Preguntas <span class="text-blue">Frecuentes</span></h2>
@@ -341,7 +399,7 @@
 
 
 
-        <section id="contacto" class="contact">
+        <section id="contacto" class="contact" data-nav-theme="light">
             <div class="bg-blob" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.2;"></div>
             <div class="container">
                 <div class="contact-card reveal premium-contact">
@@ -364,17 +422,17 @@
                             </div>
                         </div>
                     </div>
-                    <form class="contact-form-new">
+                    <form class="contact-form-new" id="contact-form">
                         <div class="form-row">
                             <div class="form-group-new">
-                                <input type="text" id="name" placeholder="Tu nombre" required>
+                                <input type="text" id="name" name="name" placeholder="Tu nombre" required>
                             </div>
                             <div class="form-group-new">
-                                <input type="email" id="email" placeholder="Correo corporativo" required>
+                                <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
                             </div>
                         </div>
                         <div class="form-group-new">
-                            <select id="interest">
+                            <select id="interest" name="interest">
                                 <option value="" disabled selected>Me interesa...</option>
                                 <option value="bot">Asistente Virtual</option>
                                 <option value="web">Página Web / App</option>
@@ -383,9 +441,10 @@
                             </select>
                         </div>
                         <div class="form-group-new">
-                            <textarea placeholder="¿En qué podemos ayudarte?" rows="3"></textarea>
+                            <textarea placeholder="¿En qué podemos ayudarte?" name="message" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-glow">Enviar Solicitud <i data-lucide="send" size="18"></i></button>
+                        <button type="submit" id="form-submit-btn" class="btn btn-primary btn-glow">Enviar Solicitud <i data-lucide="send" size="18"></i></button>
+                        <div id="form-status" style="display:none; text-align:center; padding: 1rem; border-radius: 12px; font-weight: 600;"></div>
                     </form>
                 </div>
             </div>
@@ -408,19 +467,14 @@
         </section>
     </main>
 
-    <footer>
+    <footer data-nav-theme="dark">
         <div class="footer-grid">
             <div class="footer-col reveal stagger-1">
                 <a href="#" class="logo-wrapper" style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
                     <img src="logo.png" alt="Logo" style="height: 35px; width: auto; object-fit: contain;">
-                    CZ COZAM Technologies
+                    COZAM Technologies
                 </a>
-                <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-bottom: 1.5rem;">Soluciones tecnológicas que impulsan tu negocio.</p>
-                <div style="display: flex; gap: 1rem;">
-                    <a href="#" style="color: white;"><i data-lucide="facebook" size="20"></i></a>
-                    <a href="#" style="color: white;"><i data-lucide="instagram" size="20"></i></a>
-                    <a href="#" style="color: white;"><i data-lucide="linkedin" size="20"></i></a>
-                </div>
+                <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-bottom: 1.5rem;">Soluciones tecnológicas que impulsan tu negocio desde Venezuela al mundo.</p>
             </div>
             <div class="footer-col reveal stagger-2">
                 <h4>Soluciones</h4>
@@ -434,7 +488,7 @@
             <div class="footer-col reveal stagger-3">
                 <h4>Empresa</h4>
                 <ul>
-                    <li><a href="#metodologia">Nosotros</a></li>
+                    <li><a href="#fundador">Fundador</a></li>
                     <li><a href="#casos">Casos de Éxito</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
@@ -442,16 +496,16 @@
             <div class="footer-col reveal stagger-1">
                 <h4>Contacto</h4>
                 <ul style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">
-                    <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="phone" size="16"></i> +51 987 654 321</li>
-                    <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="mail" size="16"></i> hola@cozamtech.com</li>
-                    <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="map-pin" size="16"></i> Lima, Perú</li>
+                    <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="phone" size="16"></i> +58 412 477 9301</li>
+                    <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="mail" size="16"></i> johangabriel.cz@gmail.com</li>
+                    <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="map-pin" size="16"></i> Carabobo, Venezuela</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="footer-logo-text">
                 <img src="logo.png" alt="Logo" class="footer-logo">
-                <p>&copy; 2024 COZAM Technologies. Todos los derechos reservados.</p>
+                <p>&copy; 2025 COZAM Technologies. Todos los derechos reservados.</p>
             </div>
             <div style="display: flex; gap: 1.5rem;">
                 <a href="#legal" style="color: inherit; text-decoration: none;">Política de privacidad</a>

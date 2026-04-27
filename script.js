@@ -1,30 +1,175 @@
 // Initialize Lucide icons
 lucide.createIcons();
 
-// Floating Navigation Scroll Effect
+// =============================================
+// PARTICLE CANVAS — Animated tech background
+// =============================================
+const canvas = document.getElementById('particle-canvas');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouse = { x: null, y: null };
+    const PARTICLE_COUNT = 80;
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = document.querySelector('.hero').offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class Particle {
+        constructor() {
+            this.reset();
+        }
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.8;
+            this.speedY = (Math.random() - 0.5) * 0.8;
+            this.opacity = Math.random() * 0.5 + 0.1;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            // Mouse repulsion
+            if (mouse.x !== null) {
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    this.x += dx / dist * 2;
+                    this.y += dy / dist * 2;
+                }
+            }
+
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0, 194, 255, ${this.opacity})`;
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push(new Particle());
+    }
+
+    function connectParticles() {
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 150) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = `rgba(0, 194, 255, ${0.08 * (1 - dist / 150)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        connectParticles();
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // Track mouse over hero
+    document.querySelector('.hero').addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+    });
+    document.querySelector('.hero').addEventListener('mouseleave', () => {
+        mouse.x = null; mouse.y = null;
+    });
+}
+
+// =============================================
+// FLOATING NAVIGATION — Scroll + Theme
+// =============================================
 const nav = document.getElementById('main-nav');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         nav.classList.add('scrolled');
     } else {
         nav.classList.remove('scrolled');
+        nav.classList.remove('nav-light');
+        return;
+    }
+
+    // Smart theme detection
+    const elements = document.elementsFromPoint(window.innerWidth / 2, 50);
+    const sectionBelow = elements.find(el =>
+        !el.closest('#main-nav') &&
+        (el.closest('section') || el.closest('footer') || el.closest('.marquee-wrapper'))
+    );
+    const targetSection = sectionBelow ? sectionBelow.closest('section, footer, .marquee-wrapper') : null;
+    const theme = targetSection ? targetSection.getAttribute('data-nav-theme') || 'dark' : 'dark';
+
+    if (theme === 'light') {
+        nav.classList.add('nav-light');
+    } else {
+        nav.classList.remove('nav-light');
     }
 });
 
-// Smooth scroll for all links
+// =============================================
+// TYPING EFFECT — Hero subtitle
+// =============================================
+const typingEl = document.getElementById('typing-text');
+if (typingEl) {
+    const phrases = [
+        'Asistentes virtuales inteligentes.',
+        'Páginas web que convierten.',
+        'Apps que automatizan todo.',
+        'Tecnología que escala tu negocio.'
+    ];
+    let phraseIdx = 0, charIdx = 0, isDeleting = false;
+
+    function type() {
+        const current = phrases[phraseIdx];
+        if (isDeleting) {
+            typingEl.textContent = current.substring(0, charIdx--);
+            if (charIdx < 0) { isDeleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; }
+            setTimeout(type, 30);
+        } else {
+            typingEl.textContent = current.substring(0, charIdx++);
+            if (charIdx > current.length) { isDeleting = true; setTimeout(type, 2000); }
+            else setTimeout(type, 60);
+        }
+    }
+    setTimeout(type, 1000);
+}
+
+// =============================================
+// SMOOTH SCROLL
+// =============================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
 
-// Scroll Reveal Logic
+// =============================================
+// SCROLL REVEAL — With variety
+// =============================================
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -33,11 +178,56 @@ const revealObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.reveal').forEach(el => {
-    revealObserver.observe(el);
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// =============================================
+// 3D TILT CARDS
+// =============================================
+document.querySelectorAll('.solution-card, .step-card, .case-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    });
 });
 
-// Chat Demo Animation
+// =============================================
+// MAGNETIC BUTTONS
+// =============================================
+document.querySelectorAll('.btn-primary').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0, 0)';
+    });
+});
+
+// =============================================
+// PARALLAX SCROLL ELEMENTS
+// =============================================
+window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    document.querySelectorAll('.bg-blob').forEach((blob, i) => {
+        const speed = i % 2 === 0 ? 0.03 : -0.02;
+        blob.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+});
+
+// =============================================
+// CHAT DEMO ANIMATION
+// =============================================
 const chatMessages = [
     { type: 'bot', text: '¡Hola! Bienvenido a COZAM Technologies. ¿En qué podemos ayudarte hoy?' },
     { type: 'user', text: 'Hola, me gustaría automatizar mi WhatsApp de ventas.' },
@@ -57,14 +247,10 @@ function addMessage() {
         bubble.className = `chat-bubble ${msg.type}`;
         bubble.textContent = msg.text;
         chatContainer.appendChild(bubble);
-        
-        // Auto scroll to bottom
         chatContainer.scrollTop = chatContainer.scrollHeight;
-        
         messageIndex++;
-        setTimeout(addMessage, 2000); // Wait 2 seconds between messages
+        setTimeout(addMessage, 2000);
     } else {
-        // Reset after some time
         setTimeout(() => {
             chatContainer.innerHTML = '';
             messageIndex = 0;
@@ -73,7 +259,6 @@ function addMessage() {
     }
 }
 
-// Start chat demo when the section is revealed
 const chatSection = document.querySelector('.chat-demo');
 const chatObserver = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
@@ -84,61 +269,20 @@ const chatObserver = new IntersectionObserver((entries) => {
 
 if (chatSection) chatObserver.observe(chatSection);
 
-// Testimonials Slider (Simple Rotation)
-const testimonials = [
-    {
-        text: '"Redujimos nuestro tiempo de respuesta en un 80%. Ahora nuestros clientes están más felices y nosotros también."',
-        author: 'Carlos M.',
-        role: 'Gerente Comercial'
-    },
-    {
-        text: '"La implementación de nuestra página web fue impecable. Las conversiones han aumentado un 40% desde el primer mes."',
-        author: 'Laura G.',
-        role: 'Directora de Marketing'
-    },
-    {
-        text: '"El asistente virtual maneja el 90% de nuestras consultas diarias sin intervención humana. Es como tener un empleado que nunca duerme."',
-        author: 'Andrés R.',
-        role: 'Fundador de E-commerce'
-    }
-];
-
-let currentTestimonial = 0;
-const testimonialText = document.querySelector('.testimonial-text');
-const authorName = document.querySelector('.author-info h4');
-const authorRole = document.querySelector('.author-info p');
-
-function rotateTestimonials() {
-    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-    const t = testimonials[currentTestimonial];
-    
-    const card = document.querySelector('.testimonial-card');
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(10px)';
-    
-    setTimeout(() => {
-        testimonialText.textContent = t.text;
-        authorName.textContent = t.author;
-        authorRole.textContent = t.role;
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-    }, 500);
-}
-
-setInterval(rotateTestimonials, 6000);
-
-// FAQ Accordion
-const faqItems = document.querySelectorAll('.faq-item');
-faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    question.addEventListener('click', () => {
+// =============================================
+// FAQ ACCORDION
+// =============================================
+document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
         const isActive = item.classList.contains('active');
-        faqItems.forEach(i => i.classList.remove('active'));
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
         if (!isActive) item.classList.add('active');
     });
 });
 
-// Savings Calculator
+// =============================================
+// SAVINGS CALCULATOR
+// =============================================
 const leadsRange = document.getElementById('leads-range');
 const leadsValue = document.getElementById('leads-value');
 const hoursSaved = document.getElementById('hours-saved');
@@ -148,13 +292,116 @@ if (leadsRange) {
     leadsRange.addEventListener('input', (e) => {
         const val = e.target.value;
         leadsValue.textContent = val;
-        
-        // Logic: 15 mins saved per lead (0.25 hours)
-        const hours = Math.round(val * 0.25);
-        // Logic: $10 saved per lead
-        const money = val * 10;
-        
-        hoursSaved.textContent = hours;
-        moneySaved.textContent = `$${money.toLocaleString()}`;
+        hoursSaved.textContent = Math.round(val * 0.25);
+        moneySaved.textContent = `$${(val * 10).toLocaleString()}`;
+    });
+}
+
+// =============================================
+// ANIMATED COUNTERS
+// =============================================
+function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    const duration = 2000;
+    const start = performance.now();
+
+    function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+}
+
+const counterEls = document.querySelectorAll('.stat-number');
+if (counterEls.length) {
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    counterEls.forEach(el => counterObserver.observe(el));
+}
+
+// =============================================
+// MOUSE GLOW TRACKER — follows cursor on dark sections
+// =============================================
+const glowFollower = document.getElementById('mouse-glow');
+if (glowFollower) {
+    document.addEventListener('mousemove', (e) => {
+        glowFollower.style.left = e.clientX + 'px';
+        glowFollower.style.top = e.clientY + 'px';
+    });
+}
+
+// =============================================
+// SECTION NUMBER PROGRESS
+// =============================================
+const progressBar = document.getElementById('scroll-progress');
+if (progressBar) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = scrollPercent + '%';
+    });
+}
+
+// =============================================
+// CONTACT FORM — HTTP POST JSON
+// =============================================
+const FORM_ENDPOINT = 'https://webhook.site/191b36b4-0982-47ae-92b9-93c2e4489389';
+
+const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('form-submit-btn');
+const formStatus = document.getElementById('form-status');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const payload = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            interest: document.getElementById('interest').value,
+            message: contactForm.querySelector('textarea[name="message"]').value,
+            timestamp: new Date().toISOString()
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Enviando...</span>';
+        formStatus.style.display = 'none';
+
+        try {
+            await fetch(FORM_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            formStatus.style.display = 'block';
+            formStatus.style.background = 'rgba(34, 197, 94, 0.1)';
+            formStatus.style.color = '#16a34a';
+            formStatus.style.border = '1px solid rgba(34,197,94,0.3)';
+            formStatus.textContent = '✓ Solicitud enviada con éxito.';
+            contactForm.reset();
+
+        } catch (err) {
+            formStatus.style.display = 'block';
+            formStatus.style.background = 'rgba(239, 68, 68, 0.1)';
+            formStatus.style.color = '#dc2626';
+            formStatus.style.border = '1px solid rgba(239,68,68,0.3)';
+            formStatus.textContent = '✗ Hubo un error. Escríbenos directamente a johangabriel.cz@gmail.com';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Enviar Solicitud <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';
+        }
     });
 }
