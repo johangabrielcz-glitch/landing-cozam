@@ -13,8 +13,8 @@
         <div class="nav-container">
             <div class="nav-left">
                 <ul class="nav-links">
-                    <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#soluciones">Soluciones</a></li>
+                    <li><a href="#metodo">Metodo</a></li>
                 </ul>
             </div>
             
@@ -33,6 +33,8 @@
 
     <main id="inicio">
         <section class="hero">
+            <div class="bg-blob" style="top: 20%; left: -10%; background: radial-gradient(circle, var(--color-primary-glow) 0%, transparent 70%);"></div>
+            <div class="bg-blob" style="bottom: 10%; right: -5%; background: radial-gradient(circle, var(--color-secondary-glow) 0%, transparent 70%); animation-delay: -5s;"></div>
             <div class="hero-container hero-centered">
                 <div class="hero-content reveal text-center">
                     <div class="hero-badge" style="margin-left: auto; margin-right: auto;">
@@ -50,7 +52,22 @@
             </div>
         </section>
 
-        <section class="pain-points">
+        <div class="marquee-wrapper">
+            <div class="marquee-content">
+                <div class="marquee-item"><i data-lucide="zap"></i> Potencia tu negocio</div>
+                <div class="marquee-item"><i data-lucide="cpu"></i> Inteligencia Artificial</div>
+                <div class="marquee-item"><i data-lucide="shield"></i> Seguridad Total</div>
+                <div class="marquee-item"><i data-lucide="rocket"></i> Escala sin límites</div>
+                <!-- Duplicate -->
+                <div class="marquee-item"><i data-lucide="zap"></i> Potencia tu negocio</div>
+                <div class="marquee-item"><i data-lucide="cpu"></i> Inteligencia Artificial</div>
+                <div class="marquee-item"><i data-lucide="shield"></i> Seguridad Total</div>
+                <div class="marquee-item"><i data-lucide="rocket"></i> Escala sin límites</div>
+            </div>
+        </div>
+
+        <section id="problemas" class="pain-points">
+            <div class="bg-blob" style="top: 0; right: -10%; opacity: 0.3;"></div>
             <div class="container">
                 <div class="section-header reveal">
                     <h2>¿Tu negocio pierde oportunidades por <span class="text-blue">no responder a tiempo?</span></h2>
@@ -75,6 +92,7 @@
         </section>
 
         <section id="soluciones" class="solutions">
+            <div class="bg-blob" style="bottom: 0; left: -10%; opacity: 0.3; background: radial-gradient(circle, var(--color-secondary-glow) 0%, transparent 70%);"></div>
             <div class="container">
                 <div class="section-header reveal">
                     <h2>Soluciones que <span class="text-blue">impulsan tu negocio</span></h2>
@@ -121,15 +139,19 @@
             </div>
         </section>
 
-        <section class="benefits-bar">
-            <div class="benefits-container reveal">
-                <div class="benefit-item"><i data-lucide="zap"></i> Respuestas inmediatas</div>
-                <div class="benefit-item"><i data-lucide="trending-up"></i> Más conversiones</div>
-                <div class="benefit-item"><i data-lucide="clock"></i> Ahorro de tiempo</div>
-                <div class="benefit-item"><i data-lucide="smile"></i> Mejor experiencia del cliente</div>
-                <div class="benefit-item"><i data-lucide="shield-check"></i> Presencia digital sólida</div>
+        <div class="marquee-wrapper marquee-dark">
+            <div class="marquee-content" style="animation-direction: reverse;">
+                <div class="marquee-item"><i data-lucide="trending-up"></i> Resultados Garantizados</div>
+                <div class="marquee-item"><i data-lucide="users"></i> Clientes Satisfechos</div>
+                <div class="marquee-item"><i data-lucide="star"></i> Calidad COZAM</div>
+                <div class="marquee-item"><i data-lucide="check"></i> Soporte 24/7</div>
+                <!-- Duplicate -->
+                <div class="marquee-item"><i data-lucide="trending-up"></i> Resultados Garantizados</div>
+                <div class="marquee-item"><i data-lucide="users"></i> Clientes Satisfechos</div>
+                <div class="marquee-item"><i data-lucide="star"></i> Calidad COZAM</div>
+                <div class="marquee-item"><i data-lucide="check"></i> Soporte 24/7</div>
             </div>
-        </section>
+        </div>
 
         <section class="chat-demo">
             <div class="chat-demo-grid">
@@ -150,7 +172,7 @@
             </div>
         </section>
 
-        <section id="metodologia" class="methodology">
+        <section id="metodo" class="methodology">
             <div class="container">
                 <div class="section-header reveal">
                     <h2>Así <span class="text-blue">trabajamos</span></h2>
@@ -181,6 +203,20 @@
                 <div class="resolve-badge reveal" style="background: white; border-color: #E2E8F0; color: var(--color-primary);">No vendemos tecnología. Creamos soluciones que funcionan.</div>
             </div>
         </section>
+
+        <div class="marquee-wrapper marquee-dark">
+            <div class="marquee-content" style="animation-direction: reverse; animation-duration: 40s;">
+                <div class="marquee-item"><i data-lucide="globe"></i> Presencia Global</div>
+                <div class="marquee-item"><i data-lucide="code-2"></i> Desarrollo Premium</div>
+                <div class="marquee-item"><i data-lucide="activity"></i> Optimización Continua</div>
+                <div class="marquee-item"><i data-lucide="zap"></i> Implementación Rápida</div>
+                <!-- Duplicate -->
+                <div class="marquee-item"><i data-lucide="globe"></i> Presencia Global</div>
+                <div class="marquee-item"><i data-lucide="code-2"></i> Desarrollo Premium</div>
+                <div class="marquee-item"><i data-lucide="activity"></i> Optimización Continua</div>
+                <div class="marquee-item"><i data-lucide="zap"></i> Implementación Rápida</div>
+            </div>
+        </div>
 
         <section id="casos" class="cases">
             <div class="container">
@@ -251,6 +287,20 @@
             </div>
         </section>
 
+        <div class="marquee-wrapper">
+            <div class="marquee-content">
+                <div class="marquee-item">Preguntas Frecuentes</div>
+                <div class="marquee-item">Soporte Técnico</div>
+                <div class="marquee-item">Consultoría IA</div>
+                <div class="marquee-item">Desarrollo Web</div>
+                <!-- Duplicate -->
+                <div class="marquee-item">Preguntas Frecuentes</div>
+                <div class="marquee-item">Soporte Técnico</div>
+                <div class="marquee-item">Consultoría IA</div>
+                <div class="marquee-item">Desarrollo Web</div>
+            </div>
+        </div>
+
         <section id="faq" class="faq">
             <div class="container">
                 <div class="section-header reveal">
@@ -292,6 +342,7 @@
 
 
         <section id="contacto" class="contact">
+            <div class="bg-blob" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.2;"></div>
             <div class="container">
                 <div class="contact-card reveal premium-contact">
                     <div class="contact-info-new">
