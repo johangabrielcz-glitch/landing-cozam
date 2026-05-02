@@ -18,72 +18,127 @@
     <div id="scroll-progress"></div>
     <div id="mouse-glow"></div>
 
+    <!-- ====== NAVIGATION ====== -->
     <nav id="main-nav">
         <div class="nav-container">
-            <div class="nav-left">
-                <ul class="nav-links">
-                    <li><a href="#soluciones">Soluciones</a></li>
-                    <li><a href="#metodo">Método</a></li>
-                </ul>
-            </div>
-            
-            <a href="#" class="logo-wrapper">
+            <a href="#" class="nav-logo">
                 <img src="logo.png" alt="COZAM Logo" class="brand-logo">
+                <span class="nav-logo-text">COZAM</span>
             </a>
-
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="#casos">Casos</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </div>
+            <ul class="nav-links">
+                <li><a href="#soluciones">Soluciones</a></li>
+                <li><a href="#metodo">Método</a></li>
+                <li><a href="#casos">Casos</a></li>
+                <li><a href="#contacto" class="nav-cta">Contactar</a></li>
+            </ul>
+            <button class="nav-mobile-toggle" aria-label="Menu">
+                <i data-lucide="menu"></i>
+            </button>
         </div>
     </nav>
 
     <main id="inicio">
+
+        <!-- ====== HERO ====== -->
         <section class="hero" data-nav-theme="dark">
             <canvas id="particle-canvas"></canvas>
             <div class="hero-grid-pattern"></div>
-            <div class="bg-blob" style="top: 20%; left: -10%; background: radial-gradient(circle, var(--color-primary-glow) 0%, transparent 70%);"></div>
-            <div class="bg-blob" style="bottom: 10%; right: -5%; background: radial-gradient(circle, var(--color-secondary-glow) 0%, transparent 70%); animation-delay: -5s;"></div>
-            <div class="hero-container hero-centered">
-                <div class="hero-content reveal text-center">
+            <div class="bg-blob" style="top: 10%; left: -15%; background: radial-gradient(circle, rgba(0,82,255,0.18) 0%, transparent 70%);"></div>
+            <div class="bg-blob" style="bottom: 5%; right: -10%; background: radial-gradient(circle, rgba(0,194,255,0.12) 0%, transparent 70%); animation-delay: -7s;"></div>
+
+            <div class="hero-container">
+                <div class="hero-content reveal">
                     <div class="hero-badge">
-                        <span class="dot"></span>
-                        TECNOLOGÍA QUE TRABAJA POR TI 24/7
+                        <span class="badge-dot"></span>
+                        Tecnología activa 24/7
                     </div>
-                    <h1 class="gradient-text">Automatiza tu atención.<br><span class="shimmer-text">Escala tu negocio.</span></h1>
-                    <p class="lead">Creamos soluciones de IA que trabajan por ti 24/7.</p>
-                    <p class="sub-lead typing-line"><span id="typing-text"></span><span class="cursor-blink">|</span></p>
-                    <div style="display: flex; gap: 1rem; justify-content: center;">
-                        <a href="#contacto" class="btn btn-primary">Solicitar demo <i data-lucide="arrow-right"></i></a>
-                        <a href="#soluciones" class="btn btn-outline">Ver soluciones <i data-lucide="chevron-down"></i></a>
+                    <h1>Automatiza tu<br>atención. <span class="hero-highlight">Escala</span><br>tu negocio.</h1>
+                    <p class="hero-lead">Creamos soluciones de IA que trabajan por ti mientras tú te enfocas en lo que importa.</p>
+                    <p class="hero-typing"><span id="typing-text"></span><span class="cursor-blink">|</span></p>
+                    <div class="hero-actions">
+                        <a href="#contacto" class="btn btn-primary">Solicitar demo <i data-lucide="arrow-right" size="18"></i></a>
+                        <a href="#soluciones" class="btn btn-ghost">Ver soluciones <i data-lucide="chevron-down" size="18"></i></a>
                     </div>
-                    <div class="hero-stats" style="justify-content: center;">
+                    <div class="hero-stats">
                         <div class="stat-item">
-                            <span class="stat-number" data-target="500">0</span>
-                            <span>Consultas atendidas</span>
+                            <span class="stat-number" data-target="500">0</span><span class="stat-suffix">+</span>
+                            <span class="stat-label">Consultas atendidas</span>
                         </div>
+                        <div class="stat-divider"></div>
                         <div class="stat-item">
-                            <span class="stat-number" data-target="98">0</span><span style="color: var(--color-secondary); font-size:2.2rem; font-weight:800;">%</span>
-                            <span>Satisfacción</span>
+                            <span class="stat-number" data-target="98">0</span><span class="stat-suffix">%</span>
+                            <span class="stat-label">Satisfacción</span>
                         </div>
+                        <div class="stat-divider"></div>
                         <div class="stat-item">
-                            <span class="stat-number" data-target="24">0</span><span style="color: var(--color-secondary); font-size:2.2rem; font-weight:800;">/7</span>
-                            <span>Disponibilidad</span>
+                            <span class="stat-number" data-target="24">0</span><span class="stat-suffix">/7</span>
+                            <span class="stat-label">Disponibilidad</span>
                         </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal">
+                    <div class="product-card">
+                        <div class="product-card-header">
+                            <div class="product-card-avatar">
+                                <i data-lucide="bot" size="20"></i>
+                            </div>
+                            <div class="product-card-meta">
+                                <span class="product-card-name">COZAM Assistant</span>
+                                <span class="product-card-status"><span class="pulse-dot"></span> En línea ahora</span>
+                            </div>
+                            <span class="product-card-tag">IA</span>
+                        </div>
+                        <div class="product-card-chat">
+                            <div class="pchat-msg pchat-bot">
+                                <p>¡Hola! Bienvenido a COZAM 👋 ¿En qué puedo ayudarte?</p>
+                            </div>
+                            <div class="pchat-msg pchat-user">
+                                <p>Necesito información sobre sus planes</p>
+                            </div>
+                            <div class="pchat-msg pchat-bot">
+                                <p>Con gusto. Tenemos soluciones para WhatsApp, web y apps. ¿Cuántos clientes maneja mensualmente?</p>
+                            </div>
+                            <div class="pchat-typing">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="product-card-metrics">
+                            <div class="product-metric">
+                                <strong>+500</strong>
+                                <small>Consultas/mes</small>
+                            </div>
+                            <div class="product-metric-sep"></div>
+                            <div class="product-metric">
+                                <strong>3s</strong>
+                                <small>Tiempo respuesta</small>
+                            </div>
+                            <div class="product-metric-sep"></div>
+                            <div class="product-metric">
+                                <strong>98%</strong>
+                                <small>Satisfacción</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-float hero-float-1">
+                        <i data-lucide="trending-up" size="14"></i>
+                        <span>+73% más conversiones</span>
+                    </div>
+                    <div class="hero-float hero-float-2">
+                        <i data-lucide="shield-check" size="14"></i>
+                        <span>100% automatizado</span>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ====== MARQUEE 1 ====== -->
         <div class="marquee-wrapper" data-nav-theme="dark">
-            <div class="marquee-content">
+            <div class="marquee-track">
                 <div class="marquee-item"><i data-lucide="zap"></i> Potencia tu negocio</div>
                 <div class="marquee-item"><i data-lucide="cpu"></i> Inteligencia Artificial</div>
                 <div class="marquee-item"><i data-lucide="shield"></i> Seguridad Total</div>
                 <div class="marquee-item"><i data-lucide="rocket"></i> Escala sin límites</div>
-                <!-- Duplicate -->
                 <div class="marquee-item"><i data-lucide="zap"></i> Potencia tu negocio</div>
                 <div class="marquee-item"><i data-lucide="cpu"></i> Inteligencia Artificial</div>
                 <div class="marquee-item"><i data-lucide="shield"></i> Seguridad Total</div>
@@ -91,86 +146,108 @@
             </div>
         </div>
 
+        <!-- ====== PAIN POINTS ====== -->
         <section id="problemas" class="pain-points" data-nav-theme="light">
-            <div class="bg-blob" style="top: 0; right: -10%; opacity: 0.3;"></div>
             <div class="container">
                 <div class="section-header reveal">
-                    <h2>¿Tu negocio pierde oportunidades por <span class="text-blue">no responder a tiempo?</span></h2>
-                    <div style="width: 50px; height: 3px; background: var(--color-primary); margin: 1.5rem auto;"></div>
+                    <span class="section-label">El problema</span>
+                    <h2>¿Tu negocio pierde oportunidades<br>por <span class="text-blue">no responder a tiempo?</span></h2>
                 </div>
-                <div class="points-grid">
-                    <div class="point-item reveal stagger-1">
-                        <div class="point-icon"><i data-lucide="message-square" size="32"></i></div>
-                        <p style="font-weight: 600;">Clientes escriben y nadie responde</p>
+                <div class="pain-grid">
+                    <div class="pain-card reveal stagger-1">
+                        <div class="pain-icon">
+                            <i data-lucide="message-square-off" size="28"></i>
+                        </div>
+                        <h3>Clientes sin respuesta</h3>
+                        <p>Mensajes que llegan fuera de horario quedan sin atender, perdiendo ventas potenciales.</p>
                     </div>
-                    <div class="point-item reveal stagger-2">
-                        <div class="point-icon"><i data-lucide="clock" size="32"></i></div>
-                        <p style="font-weight: 600;">Respuestas repetitivas que consumen tiempo</p>
+                    <div class="pain-card reveal stagger-2">
+                        <div class="pain-icon">
+                            <i data-lucide="clock" size="28"></i>
+                        </div>
+                        <h3>Tiempo desperdiciado</h3>
+                        <p>Tu equipo responde las mismas preguntas una y otra vez en lugar de cerrar ventas.</p>
                     </div>
-                    <div class="point-item reveal stagger-3">
-                        <div class="point-icon"><i data-lucide="frown" size="32"></i></div>
-                        <p style="font-weight: 600;">Procesos manuales que frenan el crecimiento</p>
+                    <div class="pain-card reveal stagger-3">
+                        <div class="pain-icon">
+                            <i data-lucide="trending-down" size="28"></i>
+                        </div>
+                        <h3>Crecimiento estancado</h3>
+                        <p>Los procesos manuales impiden escalar el negocio sin contratar más personal.</p>
                     </div>
                 </div>
-                <div class="resolve-badge reveal">Nosotros lo resolvemos por ti.</div>
+                <div class="pain-resolve reveal">
+                    <i data-lucide="check-circle-2" size="20"></i>
+                    Nosotros resolvemos todo esto por ti.
+                </div>
             </div>
         </section>
 
+        <!-- ====== SOLUTIONS ====== -->
         <section id="soluciones" class="solutions" data-nav-theme="light">
-            <div class="bg-blob" style="bottom: 0; left: -10%; opacity: 0.3; background: radial-gradient(circle, var(--color-secondary-glow) 0%, transparent 70%);"></div>
             <div class="container">
                 <div class="section-header reveal">
-                    <h2>Soluciones que <span class="text-blue">impulsan tu negocio</span></h2>
-                    <div style="width: 50px; height: 3px; background: var(--color-primary); margin: 1.5rem auto;"></div>
+                    <span class="section-label">Soluciones</span>
+                    <h2>Tecnología que <span class="text-blue">trabaja por ti</span></h2>
                 </div>
                 <div class="solutions-grid">
                     <div class="solution-card reveal stagger-1">
-                        <div class="sol-icon whatsapp"><i data-lucide="message-circle"></i></div>
-                        <h3>Asistentes virtuales para WhatsApp</h3>
-                        <p>Automatiza respuestas, califica clientes y atiende 24/7 sin esfuerzo.</p>
-                        <ul class="features-list">
-                            <li><i data-lucide="check-circle-2"></i> Integración con WhatsApp</li>
-                            <li><i data-lucide="check-circle-2"></i> Respuestas inteligentes</li>
-                            <li><i data-lucide="check-circle-2"></i> Calificación de leads</li>
-                            <li><i data-lucide="check-circle-2"></i> Escalamiento a humanos</li>
+                        <div class="sol-icon-wrap sol-green">
+                            <i data-lucide="message-circle" size="26"></i>
+                        </div>
+                        <div class="sol-label">WhatsApp & Chatbots</div>
+                        <h3>Asistentes virtuales inteligentes</h3>
+                        <p>Automatiza respuestas, califica leads y atiende clientes 24/7 sin esfuerzo humano.</p>
+                        <ul class="sol-features">
+                            <li><i data-lucide="check" size="14"></i> Integración con WhatsApp Business</li>
+                            <li><i data-lucide="check" size="14"></i> Respuestas inteligentes con IA</li>
+                            <li><i data-lucide="check" size="14"></i> Calificación automática de leads</li>
+                            <li><i data-lucide="check" size="14"></i> Escalamiento a agente humano</li>
                         </ul>
-                        <a href="#" class="learn-more">Conocer más <i data-lucide="arrow-right" size="16"></i></a>
+                        <a href="#contacto" class="sol-link">Conocer más <i data-lucide="arrow-right" size="15"></i></a>
                     </div>
-                    <div class="solution-card reveal stagger-2">
-                        <div class="sol-icon web"><i data-lucide="globe"></i></div>
+                    <div class="solution-card solution-card-featured reveal stagger-2">
+                        <div class="sol-featured-badge">Más popular</div>
+                        <div class="sol-icon-wrap sol-blue">
+                            <i data-lucide="globe" size="26"></i>
+                        </div>
+                        <div class="sol-label">Web & Presencia Digital</div>
                         <h3>Páginas web profesionales</h3>
-                        <p>Tu negocio necesita presencia digital que convierta.</p>
-                        <ul class="features-list">
-                            <li><i data-lucide="check-circle-2"></i> Diseño moderno y atractivo</li>
-                            <li><i data-lucide="check-circle-2"></i> Optimización móvil</li>
-                            <li><i data-lucide="check-circle-2"></i> Creadas para vender</li>
-                            <li><i data-lucide="check-circle-2"></i> Fáciles de administrar</li>
+                        <p>Tu negocio necesita presencia digital que convierta visitantes en clientes reales.</p>
+                        <ul class="sol-features">
+                            <li><i data-lucide="check" size="14"></i> Diseño moderno y atractivo</li>
+                            <li><i data-lucide="check" size="14"></i> Optimización para móviles</li>
+                            <li><i data-lucide="check" size="14"></i> Diseñadas para convertir</li>
+                            <li><i data-lucide="check" size="14"></i> Fáciles de administrar</li>
                         </ul>
-                        <a href="#" class="learn-more">Conocer más <i data-lucide="arrow-right" size="16"></i></a>
+                        <a href="#contacto" class="sol-link">Conocer más <i data-lucide="arrow-right" size="15"></i></a>
                     </div>
                     <div class="solution-card reveal stagger-3">
-                        <div class="sol-icon app"><i data-lucide="code-2"></i></div>
+                        <div class="sol-icon-wrap sol-purple">
+                            <i data-lucide="code-2" size="26"></i>
+                        </div>
+                        <div class="sol-label">Apps & Automatización</div>
                         <h3>Aplicaciones web a medida</h3>
-                        <p>Digitaliza procesos y mejora la eficiencia de tu empresa.</p>
-                        <ul class="features-list">
-                            <li><i data-lucide="check-circle-2"></i> Sistemas internos</li>
-                            <li><i data-lucide="check-circle-2"></i> Paneles administrativos</li>
-                            <li><i data-lucide="check-circle-2"></i> Automatización de procesos</li>
-                            <li><i data-lucide="check-circle-2"></i> Seguras y escalables</li>
+                        <p>Digitaliza procesos internos y mejora la eficiencia operativa de tu empresa.</p>
+                        <ul class="sol-features">
+                            <li><i data-lucide="check" size="14"></i> Sistemas internos personalizados</li>
+                            <li><i data-lucide="check" size="14"></i> Paneles administrativos</li>
+                            <li><i data-lucide="check" size="14"></i> Automatización de procesos</li>
+                            <li><i data-lucide="check" size="14"></i> Seguras y escalables</li>
                         </ul>
-                        <a href="#" class="learn-more">Conocer más <i data-lucide="arrow-right" size="16"></i></a>
+                        <a href="#contacto" class="sol-link">Conocer más <i data-lucide="arrow-right" size="15"></i></a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ====== MARQUEE 2 ====== -->
         <div class="marquee-wrapper marquee-dark" data-nav-theme="dark">
-            <div class="marquee-content" style="animation-direction: reverse;">
+            <div class="marquee-track marquee-reverse">
                 <div class="marquee-item"><i data-lucide="trending-up"></i> Resultados Garantizados</div>
                 <div class="marquee-item"><i data-lucide="users"></i> Clientes Satisfechos</div>
                 <div class="marquee-item"><i data-lucide="star"></i> Calidad COZAM</div>
                 <div class="marquee-item"><i data-lucide="check"></i> Soporte 24/7</div>
-                <!-- Duplicate -->
                 <div class="marquee-item"><i data-lucide="trending-up"></i> Resultados Garantizados</div>
                 <div class="marquee-item"><i data-lucide="users"></i> Clientes Satisfechos</div>
                 <div class="marquee-item"><i data-lucide="star"></i> Calidad COZAM</div>
@@ -178,64 +255,96 @@
             </div>
         </div>
 
+        <!-- ====== CHAT DEMO ====== -->
         <section class="chat-demo" data-nav-theme="light">
-            <div class="chat-demo-grid">
-                <div class="chat-demo-content reveal">
-                    <h2>Mira cómo un cliente puede ser atendido <span class="text-blue">automáticamente en segundos.</span></h2>
-                    <div style="width: 50px; height: 3px; background: var(--color-primary); margin: 1.5rem 0 2rem;"></div>
-                    <ul class="features-list" style="font-size: 1.1rem; gap: 1.5rem;">
-                        <li><i data-lucide="clock"></i> Atención 24/7</li>
-                        <li><i data-lucide="message-square"></i> Respuestas inteligentes</li>
-                        <li><i data-lucide="users"></i> Más clientes satisfechos</li>
-                    </ul>
-                </div>
-                <div class="chat-mockup-wrapper reveal">
-                    <div class="chat-content" id="chat-demo-container">
-                        <!-- Chat messages will be injected by JS -->
+            <div class="container">
+                <div class="chat-demo-grid">
+                    <div class="chat-demo-content reveal">
+                        <span class="section-label">Demo en vivo</span>
+                        <h2>Mira cómo tu cliente es atendido <span class="text-blue">automáticamente</span> en segundos.</h2>
+                        <ul class="chat-features">
+                            <li>
+                                <div class="chat-feature-icon"><i data-lucide="clock" size="18"></i></div>
+                                <div>
+                                    <strong>Atención 24/7</strong>
+                                    <span>Sin importar la hora, tus clientes siempre reciben respuesta.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="chat-feature-icon"><i data-lucide="brain" size="18"></i></div>
+                                <div>
+                                    <strong>Respuestas inteligentes</strong>
+                                    <span>El bot entiende el contexto y responde de forma natural.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="chat-feature-icon"><i data-lucide="users" size="18"></i></div>
+                                <div>
+                                    <strong>Más clientes felices</strong>
+                                    <span>Atención instantánea = clientes satisfechos que regresan.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="chat-mockup reveal">
+                        <div class="chat-mockup-header">
+                            <div class="chat-mockup-avatar">
+                                <i data-lucide="bot" size="18"></i>
+                            </div>
+                            <div>
+                                <div class="chat-mockup-name">COZAM Bot</div>
+                                <div class="chat-mockup-status"><span class="pulse-dot"></span> En línea</div>
+                            </div>
+                        </div>
+                        <div class="chat-content" id="chat-demo-container"></div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ====== METHODOLOGY ====== -->
         <section id="metodo" class="methodology" data-nav-theme="light">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2>Así <span class="text-blue">trabajamos</span></h2>
-                    <div style="width: 50px; height: 3px; background: var(--color-primary); margin: 1.5rem auto;"></div>
+                    <span class="section-label">Proceso</span>
+                    <h2>Así <span class="text-blue">trabajamos</span> contigo</h2>
                 </div>
                 <div class="steps-grid">
                     <div class="step-card reveal stagger-1">
-                        <div class="step-number">1</div>
+                        <div class="step-number">01</div>
                         <h3>Entendemos tu negocio</h3>
-                        <p>Escuchamos tus necesidades y objetivos para ofrecerte la mejor solución.</p>
+                        <p>Escuchamos tus necesidades y objetivos para diseñar la solución perfecta.</p>
                     </div>
                     <div class="step-card reveal stagger-2">
-                        <div class="step-number">2</div>
+                        <div class="step-number">02</div>
                         <h3>Diseñamos la solución</h3>
-                        <p>Creamos un plan personalizado pensado para tus procesos y tus clientes.</p>
+                        <p>Creamos un plan personalizado pensado para tus procesos y clientes.</p>
                     </div>
                     <div class="step-card reveal stagger-3">
-                        <div class="step-number">3</div>
+                        <div class="step-number">03</div>
                         <h3>Implementamos y automatizamos</h3>
-                        <p>Desarrollamos, integramos y ponemos todo en marcha.</p>
+                        <p>Desarrollamos, integramos y ponemos todo en marcha rápidamente.</p>
                     </div>
                     <div class="step-card reveal stagger-1">
-                        <div class="step-number">4</div>
+                        <div class="step-number">04</div>
                         <h3>Acompañamos tu crecimiento</h3>
-                        <p>Seguimiento, soporte y mejoras continuas para que sigas escalando.</p>
+                        <p>Soporte continuo y mejoras para que sigas escalando sin límites.</p>
                     </div>
                 </div>
-                <div class="resolve-badge reveal" style="background: white; border-color: #E2E8F0; color: var(--color-primary);">No vendemos tecnología. Creamos soluciones que funcionan.</div>
+                <div class="steps-note reveal">
+                    <i data-lucide="sparkles" size="18"></i>
+                    No vendemos tecnología. Creamos soluciones que funcionan.
+                </div>
             </div>
         </section>
 
+        <!-- ====== MARQUEE 3 ====== -->
         <div class="marquee-wrapper marquee-dark" data-nav-theme="dark">
-            <div class="marquee-content" style="animation-direction: reverse; animation-duration: 40s;">
+            <div class="marquee-track" style="animation-duration: 40s;">
                 <div class="marquee-item"><i data-lucide="globe"></i> Presencia Global</div>
                 <div class="marquee-item"><i data-lucide="code-2"></i> Desarrollo Premium</div>
                 <div class="marquee-item"><i data-lucide="activity"></i> Optimización Continua</div>
                 <div class="marquee-item"><i data-lucide="zap"></i> Implementación Rápida</div>
-                <!-- Duplicate -->
                 <div class="marquee-item"><i data-lucide="globe"></i> Presencia Global</div>
                 <div class="marquee-item"><i data-lucide="code-2"></i> Desarrollo Premium</div>
                 <div class="marquee-item"><i data-lucide="activity"></i> Optimización Continua</div>
@@ -243,47 +352,59 @@
             </div>
         </div>
 
+        <!-- ====== CASES ====== -->
         <section id="casos" class="cases" data-nav-theme="light">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2>Casos de <span class="text-blue">Éxito</span></h2>
-                    <div style="width: 50px; height: 3px; background: var(--color-primary); margin: 1.5rem auto;"></div>
+                    <span class="section-label">Resultados reales</span>
+                    <h2>Casos de <span class="text-blue">éxito</span></h2>
                 </div>
                 <div class="cases-grid">
                     <div class="case-card reveal stagger-1">
-                        <div class="case-image" style="background: linear-gradient(135deg, #0052FF, #00C2FF);">
-                            <i data-lucide="bot" size="48" color="white"></i>
+                        <div class="case-visual" style="background: linear-gradient(135deg, #0052FF, #00C2FF);">
+                            <i data-lucide="bot" size="52" color="white"></i>
                         </div>
                         <div class="case-body">
-                            <span class="case-tag">Telecomunicaciones (ISP)</span>
+                            <span class="case-tag">Telecomunicaciones · ISP</span>
                             <h3>Atención Inteligente & CZ Desk</h3>
-                            <p>Chatbot inteligente integrado al CRM CZ Desk de COZAM.</p>
+                            <p>Chatbot inteligente integrado al CRM CZ Desk de COZAM para resolución automática masiva y delegación eficiente a humanos.</p>
                             <div class="case-stats">
-                                <div><strong>+50%</strong> Auto-resolución</div>
-                                <div><strong>100%</strong> Integración CRM</div>
+                                <div class="case-stat">
+                                    <strong>+50%</strong>
+                                    <span>Auto-resolución</span>
+                                </div>
+                                <div class="case-stat">
+                                    <strong>100%</strong>
+                                    <span>Integración CRM</span>
+                                </div>
                             </div>
-                            <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 1rem;">Resolución automática masiva y delegación eficiente a humanos mediante CZ Desk.</p>
                         </div>
                     </div>
                     <div class="case-card reveal stagger-2">
-                        <div class="case-image" style="background: linear-gradient(135deg, #7C3AED, #C084FC);">
-                            <i data-lucide="smartphone" size="48" color="white"></i>
+                        <div class="case-visual" style="background: linear-gradient(135deg, #7C3AED, #C084FC);">
+                            <i data-lucide="smartphone" size="52" color="white"></i>
                         </div>
                         <div class="case-body">
-                            <span class="case-tag">App Móvil</span>
+                            <span class="case-tag">Autogestión · App Móvil</span>
                             <h3>App de Autogestión ISP</h3>
-                            <p>Plataforma para que clientes gestionen su servicio sin intervención.</p>
+                            <p>Plataforma para que clientes gestionen su servicio de internet completamente sin intervención humana.</p>
                             <div class="case-stats">
-                                <div><strong>Auto-Gestión</strong> Facturas & Info</div>
-                                <div><strong>Pagos</strong> Registro Online</div>
+                                <div class="case-stat">
+                                    <strong>100%</strong>
+                                    <span>Digital</span>
+                                </div>
+                                <div class="case-stat">
+                                    <strong>0</strong>
+                                    <span>Intervención manual</span>
+                                </div>
                             </div>
-                            <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 1rem;">Consulta de deudas, facturas y registro de pagos 100% digital.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ====== FOUNDER ====== -->
         <section id="fundador" class="founder" data-nav-theme="dark">
             <div class="container">
                 <div class="founder-grid">
@@ -291,67 +412,73 @@
                         <div class="founder-image-glow"></div>
                         <img src="founder.png" alt="Johan Contreras - Fundador de COZAM" class="founder-image">
                     </div>
-                    <div class="founder-content reveal" style="transition-delay: 0.12s;">
-                        <div class="founder-badge">
-                            <i data-lucide="user" size="14"></i>
-                            Fundador & CEO
-                        </div>
+                    <div class="founder-content reveal">
+                        <span class="founder-badge"><i data-lucide="user" size="13"></i> Fundador & CEO</span>
                         <h2 class="founder-name">Johan Contreras</h2>
                         <p class="founder-title">Builder · Desarrollador · Visionario</p>
-                        <p class="founder-quote">
-                            &ldquo;Creo que la tecnología bien aplicada puede transformar cualquier negocio, sin importar su tamaño. COZAM nació de esa idea: llevar automatización real a empresas que lo necesitan.&rdquo;
-                        </p>
+                        <blockquote class="founder-quote">
+                            "Creo que la tecnología bien aplicada puede transformar cualquier negocio, sin importar su tamaño. COZAM nació de esa idea: llevar automatización real a empresas que lo necesitan."
+                        </blockquote>
                         <div class="founder-skills">
                             <span class="skill-badge"><i data-lucide="cpu" size="13"></i> Inteligencia Artificial</span>
-                            <span class="skill-badge"><i data-lucide="code-2" size="13"></i> Desarrollo Full Stack</span>
+                            <span class="skill-badge"><i data-lucide="code-2" size="13"></i> Full Stack</span>
                             <span class="skill-badge"><i data-lucide="palette" size="13"></i> Diseño UX/UI</span>
                             <span class="skill-badge"><i data-lucide="zap" size="13"></i> Automatización</span>
                             <span class="skill-badge"><i data-lucide="bot" size="13"></i> Chatbots</span>
                         </div>
                         <div class="founder-cta">
-                            <a href="#contacto" class="btn btn-primary">Trabajar con Johan <i data-lucide="arrow-right"></i></a>
-                            <a href="mailto:johangabriel.cz@gmail.com" class="btn btn-outline">Enviar email</a>
+                            <a href="#contacto" class="btn btn-primary">Trabajar con Johan <i data-lucide="arrow-right" size="17"></i></a>
+                            <a href="mailto:johangabriel.cz@gmail.com" class="btn btn-ghost-light">Enviar email</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ====== CALCULATOR ====== -->
         <section id="calculadora" class="calculator" data-nav-theme="dark">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2>Calcula tu <span class="text-blue">Potencial de Ahorro</span></h2>
-                    <p>Descubre cuánto tiempo y dinero puedes ahorrar automatizando tus procesos.</p>
+                    <span class="section-label" style="color: var(--cyan);">Calculadora</span>
+                    <h2 style="color: white;">Calcula tu <span style="color: var(--cyan);">potencial de ahorro</span></h2>
+                    <p style="color: rgba(255,255,255,0.6); margin-top: 1rem;">Descubre cuánto tiempo y dinero puedes recuperar automatizando.</p>
                 </div>
                 <div class="calculator-card reveal">
-                    <div class="calc-input-group">
-                        <label for="leads-range">Prospectos mensuales: <span id="leads-value">100</span></label>
-                        <input type="range" id="leads-range" min="10" max="1000" value="100" class="slider">
-                    </div>
-                    <div class="calc-results">
-                        <div class="result-item">
-                            <span class="result-label">Horas ahorradas al mes</span>
-                            <span class="result-value" id="hours-saved">25</span>
+                    <div class="calc-body">
+                        <div class="calc-input-group">
+                            <label for="leads-range">Prospectos mensuales: <span id="leads-value">100</span></label>
+                            <input type="range" id="leads-range" min="10" max="1000" value="100" class="slider">
+                            <div class="slider-labels">
+                                <span>10</span>
+                                <span>1,000</span>
+                            </div>
                         </div>
-                        <div class="result-item">
-                            <span class="result-label">Valor estimado de ahorro</span>
-                            <span class="result-value" id="money-saved">$250</span>
+                        <div class="calc-results">
+                            <div class="result-item">
+                                <span class="result-value" id="hours-saved">25</span>
+                                <span class="result-label">horas ahorradas/mes</span>
+                            </div>
+                            <div class="result-sep"></div>
+                            <div class="result-item">
+                                <span class="result-value" id="money-saved">$250</span>
+                                <span class="result-label">valor estimado del ahorro</span>
+                            </div>
                         </div>
                     </div>
-                    <div style="text-align: center; margin-top: 2rem;">
-                        <a href="#contacto" class="btn btn-primary">¡Quiero empezar a ahorrar!</a>
+                    <div class="calc-cta">
+                        <a href="#contacto" class="btn btn-primary btn-lg">¡Quiero empezar a ahorrar! <i data-lucide="arrow-right" size="18"></i></a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ====== MARQUEE 4 ====== -->
         <div class="marquee-wrapper" data-nav-theme="dark">
-            <div class="marquee-content">
+            <div class="marquee-track">
                 <div class="marquee-item">Preguntas Frecuentes</div>
                 <div class="marquee-item">Soporte Técnico</div>
                 <div class="marquee-item">Consultoría IA</div>
                 <div class="marquee-item">Desarrollo Web</div>
-                <!-- Duplicate -->
                 <div class="marquee-item">Preguntas Frecuentes</div>
                 <div class="marquee-item">Soporte Técnico</div>
                 <div class="marquee-item">Consultoría IA</div>
@@ -359,11 +486,12 @@
             </div>
         </div>
 
+        <!-- ====== FAQ ====== -->
         <section id="faq" class="faq" data-nav-theme="light">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2>Preguntas <span class="text-blue">Frecuentes</span></h2>
-                    <div style="width: 50px; height: 3px; background: var(--color-primary); margin: 1.5rem auto;"></div>
+                    <span class="section-label">FAQ</span>
+                    <h2>Preguntas <span class="text-blue">frecuentes</span></h2>
                 </div>
                 <div class="faq-container">
                     <div class="faq-item">
@@ -377,7 +505,7 @@
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3>¿Necesito conocimientos técnicos?</h3>
+                            <h3>¿Necesito conocimientos técnicos para usar el sistema?</h3>
                             <i data-lucide="plus"></i>
                         </div>
                         <div class="faq-answer">
@@ -386,136 +514,126 @@
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3>¿Cuánto tiempo toma la implementación?</h3>
+                            <h3>¿Cuánto tiempo toma implementar la solución?</h3>
                             <i data-lucide="plus"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>Dependiendo de la complejidad, una solución estándar puede estar lista en un plazo de 7 a 15 días hábiles.</p>
+                            <p>Dependiendo de la complejidad, una solución estándar puede estar lista en un plazo de 7 a 15 días hábiles desde el inicio del proyecto.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-
-
+        <!-- ====== CONTACT ====== -->
         <section id="contacto" class="contact" data-nav-theme="light">
-            <div class="bg-blob" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.2;"></div>
             <div class="container">
-                <div class="contact-card reveal premium-contact">
-                    <div class="contact-info-new">
-                        <div class="contact-badge">HABLEMOS</div>
+                <div class="contact-card reveal">
+                    <div class="contact-info">
+                        <span class="contact-label">Hablemos</span>
                         <h2>¿Listo para <span class="text-blue">transformar</span> tu negocio?</h2>
-                        <p>Nuestro equipo de expertos en automatización está listo para ayudarte a escalar.</p>
-                        <div class="contact-features-mini">
-                            <div class="mini-feature">
-                                <i data-lucide="check-circle" color="var(--color-secondary)"></i>
-                                <span>Diagnóstico gratuito</span>
-                            </div>
-                            <div class="mini-feature">
-                                <i data-lucide="check-circle" color="var(--color-secondary)"></i>
-                                <span>Demo personalizada</span>
-                            </div>
-                            <div class="mini-feature">
-                                <i data-lucide="check-circle" color="var(--color-secondary)"></i>
-                                <span>Soporte 24/7</span>
-                            </div>
+                        <p>Nuestro equipo está listo para ayudarte a escalar con automatización real.</p>
+                        <ul class="contact-perks">
+                            <li><i data-lucide="check-circle" size="18"></i> Diagnóstico gratuito</li>
+                            <li><i data-lucide="check-circle" size="18"></i> Demo personalizada</li>
+                            <li><i data-lucide="check-circle" size="18"></i> Soporte 24/7 incluido</li>
+                        </ul>
+                        <div class="contact-details">
+                            <a href="tel:+584124779301" class="contact-detail-item">
+                                <i data-lucide="phone" size="16"></i>
+                                +58 412 477 9301
+                            </a>
+                            <a href="mailto:johangabriel.cz@gmail.com" class="contact-detail-item">
+                                <i data-lucide="mail" size="16"></i>
+                                johangabriel.cz@gmail.com
+                            </a>
                         </div>
                     </div>
-                    <form class="contact-form-new" id="contact-form">
+                    <form class="contact-form" id="contact-form">
                         <div class="form-row">
-                            <div class="form-group-new">
-                                <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                            <div class="form-field">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
                             </div>
-                            <div class="form-group-new">
-                                <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                            <div class="form-field">
+                                <label for="email">Correo</label>
+                                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
                             </div>
                         </div>
-                        <div class="form-group-new">
+                        <div class="form-field">
+                            <label for="interest">Me interesa</label>
                             <select id="interest" name="interest">
-                                <option value="" disabled selected>Me interesa...</option>
-                                <option value="bot">Asistente Virtual</option>
-                                <option value="web">Página Web / App</option>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="bot">Asistente Virtual para WhatsApp</option>
+                                <option value="web">Página Web o App</option>
                                 <option value="crm">CZ Desk / CRM</option>
                                 <option value="otro">Otro Proyecto</option>
                             </select>
                         </div>
-                        <div class="form-group-new">
-                            <textarea placeholder="¿En qué podemos ayudarte?" name="message" rows="3"></textarea>
+                        <div class="form-field">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" placeholder="Cuéntanos sobre tu negocio y qué necesitas automatizar..." rows="4"></textarea>
                         </div>
-                        <button type="submit" id="form-submit-btn" class="btn btn-primary btn-glow">Enviar Solicitud <i data-lucide="send" size="18"></i></button>
-                        <div id="form-status" style="display:none; text-align:center; padding: 1rem; border-radius: 12px; font-weight: 600;"></div>
+                        <button type="submit" id="form-submit-btn" class="btn btn-primary btn-block">
+                            Enviar solicitud <i data-lucide="send" size="17"></i>
+                        </button>
+                        <div id="form-status" style="display:none; text-align:center; padding: 1rem; border-radius: 10px; font-weight: 600; margin-top: 0.5rem;"></div>
                     </form>
                 </div>
             </div>
         </section>
 
-        <section id="legal" class="contact" style="padding: 4rem 0; background: #F8FAFC; border-top: 1px solid #E2E8F0;">
-            <div class="container">
-                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                    <h2 style="font-size: 1.8rem; margin-bottom: 2rem;">Aviso <span class="text-blue">Legal</span></h2>
-                    <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 2rem;">
-                        En COZAM Technologies nos tomamos en serio tu privacidad y la seguridad de tus datos. 
-                        Todas nuestras soluciones cumplen con los estándares internacionales de protección de la información.
-                    </p>
-                    <div style="display: flex; gap: 2rem; justify-content: center;">
-                        <a href="#contacto" class="btn btn-outline" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Política de Privacidad</a>
-                        <a href="#contacto" class="btn btn-outline" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Términos de Servicio</a>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
+    <!-- ====== FOOTER ====== -->
     <footer data-nav-theme="dark">
-        <div class="footer-grid">
-            <div class="footer-col reveal stagger-1">
-                <a href="#" class="logo-wrapper" style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
-                    <img src="logo.png" alt="Logo" style="height: 35px; width: auto; object-fit: contain;">
-                    COZAM Technologies
-                </a>
-                <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-bottom: 1.5rem;">Soluciones tecnológicas que impulsan tu negocio desde Venezuela al mundo.</p>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col footer-col-brand reveal stagger-1">
+                    <a href="#" class="footer-logo-link">
+                        <img src="logo.png" alt="COZAM" class="footer-logo">
+                        <span>COZAM Technologies</span>
+                    </a>
+                    <p>Soluciones tecnológicas que impulsan tu negocio desde Venezuela al mundo.</p>
+                </div>
+                <div class="footer-col reveal stagger-2">
+                    <h4>Soluciones</h4>
+                    <ul>
+                        <li><a href="#soluciones">Asistentes Virtuales</a></li>
+                        <li><a href="#soluciones">Páginas Web</a></li>
+                        <li><a href="#soluciones">Apps Web</a></li>
+                        <li><a href="#soluciones">Integraciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal stagger-3">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#fundador">Fundador</a></li>
+                        <li><a href="#casos">Casos de Éxito</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal stagger-1">
+                    <h4>Contacto</h4>
+                    <ul class="footer-contact-list">
+                        <li><i data-lucide="phone" size="15"></i> +58 412 477 9301</li>
+                        <li><i data-lucide="mail" size="15"></i> johangabriel.cz@gmail.com</li>
+                        <li><i data-lucide="map-pin" size="15"></i> Carabobo, Venezuela</li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-col reveal stagger-2">
-                <h4>Soluciones</h4>
-                <ul>
-                    <li><a href="#soluciones">Asistentes Virtuales</a></li>
-                    <li><a href="#soluciones">Páginas Web</a></li>
-                    <li><a href="#soluciones">Apps Web</a></li>
-                    <li><a href="#soluciones">Integraciones</a></li>
-                </ul>
-            </div>
-            <div class="footer-col reveal stagger-3">
-                <h4>Empresa</h4>
-                <ul>
-                    <li><a href="#fundador">Fundador</a></li>
-                    <li><a href="#casos">Casos de Éxito</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </div>
-            <div class="footer-col reveal stagger-1">
-                <h4>Contacto</h4>
-                <ul style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">
-                    <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="phone" size="16"></i> +58 412 477 9301</li>
-                    <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="mail" size="16"></i> johangabriel.cz@gmail.com</li>
-                    <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="map-pin" size="16"></i> Carabobo, Venezuela</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="footer-logo-text">
-                <img src="logo.png" alt="Logo" class="footer-logo">
+            <div class="footer-bottom">
                 <p>&copy; 2025 COZAM Technologies. Todos los derechos reservados.</p>
-            </div>
-            <div style="display: flex; gap: 1.5rem;">
-                <a href="#legal" style="color: inherit; text-decoration: none;">Política de privacidad</a>
-                <a href="#legal" style="color: inherit; text-decoration: none;">Términos y condiciones</a>
+                <div class="footer-bottom-links">
+                    <a href="#">Política de privacidad</a>
+                    <a href="#">Términos de servicio</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <a href="#" class="whatsapp-float floating">
-        <i data-lucide="message-circle"></i>
+    <a href="https://wa.me/584124779301" target="_blank" rel="noopener" class="whatsapp-float floating">
+        <i data-lucide="message-circle" size="28"></i>
     </a>
 
     <script src="script.js"></script>
