@@ -9,7 +9,7 @@ if (canvas) {
     const ctx = canvas.getContext('2d');
     let particles = [];
     let mouse = { x: null, y: null };
-    const PARTICLE_COUNT = 80;
+    const PARTICLE_COUNT = 70;
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
@@ -19,32 +19,27 @@ if (canvas) {
     window.addEventListener('resize', resizeCanvas);
 
     class Particle {
-        constructor() {
-            this.reset();
-        }
+        constructor() { this.reset(); }
         reset() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2 + 0.5;
-            this.speedX = (Math.random() - 0.5) * 0.8;
-            this.speedY = (Math.random() - 0.5) * 0.8;
-            this.opacity = Math.random() * 0.5 + 0.1;
+            this.size = Math.random() * 1.8 + 0.4;
+            this.speedX = (Math.random() - 0.5) * 0.7;
+            this.speedY = (Math.random() - 0.5) * 0.7;
+            this.opacity = Math.random() * 0.45 + 0.08;
         }
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
-
-            // Mouse repulsion
             if (mouse.x !== null) {
                 const dx = this.x - mouse.x;
                 const dy = this.y - mouse.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 120) {
-                    this.x += dx / dist * 2;
-                    this.y += dy / dist * 2;
+                if (dist < 110) {
+                    this.x += (dx / dist) * 2.2;
+                    this.y += (dy / dist) * 2.2;
                 }
             }
-
             if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
             if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
         }
@@ -56,9 +51,7 @@ if (canvas) {
         }
     }
 
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-        particles.push(new Particle());
-    }
+    for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
 
     function connectParticles() {
         for (let i = 0; i < particles.length; i++) {
@@ -66,9 +59,9 @@ if (canvas) {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 150) {
+                if (dist < 140) {
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(0, 194, 255, ${0.08 * (1 - dist / 150)})`;
+                    ctx.strokeStyle = `rgba(0, 194, 255, ${0.07 * (1 - dist / 140)})`;
                     ctx.lineWidth = 0.5;
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
@@ -86,7 +79,6 @@ if (canvas) {
     }
     animateParticles();
 
-    // Track mouse over hero
     document.querySelector('.hero').addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouse.x = e.clientX - rect.left;
@@ -98,33 +90,56 @@ if (canvas) {
 }
 
 // =============================================
-// FLOATING NAVIGATION — Scroll + Theme
+// NAVIGATION — Scroll + Theme + Mobile
 // =============================================
 const nav = document.getElementById('main-nav');
+
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
+    if (window.scrollY > 60) {
         nav.classList.add('scrolled');
     } else {
-        nav.classList.remove('scrolled');
-        nav.classList.remove('nav-light');
+        nav.classList.remove('scrolled', 'nav-light');
         return;
     }
 
-    // Smart theme detection
-    const elements = document.elementsFromPoint(window.innerWidth / 2, 50);
+    const elements = document.elementsFromPoint(window.innerWidth / 2, 55);
     const sectionBelow = elements.find(el =>
         !el.closest('#main-nav') &&
         (el.closest('section') || el.closest('footer') || el.closest('.marquee-wrapper'))
     );
-    const targetSection = sectionBelow ? sectionBelow.closest('section, footer, .marquee-wrapper') : null;
-    const theme = targetSection ? targetSection.getAttribute('data-nav-theme') || 'dark' : 'dark';
+    const targetSection = sectionBelow
+        ? sectionBelow.closest('section, footer, .marquee-wrapper')
+        : null;
+    const theme = targetSection
+        ? (targetSection.getAttribute('data-nav-theme') || 'dark')
+        : 'dark';
 
-    if (theme === 'light') {
-        nav.classList.add('nav-light');
-    } else {
-        nav.classList.remove('nav-light');
-    }
+    nav.classList.toggle('nav-light', theme === 'light');
 });
+
+// Mobile nav toggle
+const mobileToggle = document.querySelector('.nav-mobile-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (mobileToggle && navLinks) {
+    mobileToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.contains('mobile-open');
+        navLinks.classList.toggle('mobile-open', !isOpen);
+        mobileToggle.innerHTML = isOpen
+            ? '<i data-lucide="menu"></i>'
+            : '<i data-lucide="x"></i>';
+        lucide.createIcons();
+    });
+
+    // Close mobile menu on link click
+    navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            navLinks.classList.remove('mobile-open');
+            mobileToggle.innerHTML = '<i data-lucide="menu"></i>';
+            lucide.createIcons();
+        });
+    });
+}
 
 // =============================================
 // TYPING EFFECT — Hero subtitle
@@ -143,15 +158,22 @@ if (typingEl) {
         const current = phrases[phraseIdx];
         if (isDeleting) {
             typingEl.textContent = current.substring(0, charIdx--);
-            if (charIdx < 0) { isDeleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; }
-            setTimeout(type, 30);
+            if (charIdx < 0) {
+                isDeleting = false;
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+            }
+            setTimeout(type, 28);
         } else {
             typingEl.textContent = current.substring(0, charIdx++);
-            if (charIdx > current.length) { isDeleting = true; setTimeout(type, 2000); }
-            else setTimeout(type, 60);
+            if (charIdx > current.length) {
+                isDeleting = true;
+                setTimeout(type, 2200);
+            } else {
+                setTimeout(type, 55);
+            }
         }
     }
-    setTimeout(type, 1000);
+    setTimeout(type, 1200);
 }
 
 // =============================================
@@ -159,22 +181,20 @@ if (typingEl) {
 // =============================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
 });
 
 // =============================================
-// SCROLL REVEAL — With variety
+// SCROLL REVEAL
 // =============================================
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('active');
     });
 }, { threshold: 0.1 });
 
@@ -188,11 +208,11 @@ document.querySelectorAll('.solution-card, .step-card, .case-card').forEach(card
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const rotX = (y - cy) / 22;
+        const rotY = (cx - x) / 22;
+        card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
     });
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
@@ -207,7 +227,7 @@ document.querySelectorAll('.btn-primary').forEach(btn => {
         const rect = btn.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        btn.style.transform = `translate(${x * 0.28}px, ${y * 0.28}px)`;
     });
     btn.addEventListener('mouseleave', () => {
         btn.style.transform = 'translate(0, 0)';
@@ -215,12 +235,12 @@ document.querySelectorAll('.btn-primary').forEach(btn => {
 });
 
 // =============================================
-// PARALLAX SCROLL ELEMENTS
+// PARALLAX BLOBS
 // =============================================
 window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
     document.querySelectorAll('.bg-blob').forEach((blob, i) => {
-        const speed = i % 2 === 0 ? 0.03 : -0.02;
+        const speed = i % 2 === 0 ? 0.025 : -0.018;
         blob.style.transform = `translateY(${scrolled * speed}px)`;
     });
 });
@@ -241,6 +261,7 @@ const chatContainer = document.getElementById('chat-demo-container');
 let messageIndex = 0;
 
 function addMessage() {
+    if (!chatContainer) return;
     if (messageIndex < chatMessages.length) {
         const msg = chatMessages[messageIndex];
         const bubble = document.createElement('div');
@@ -265,7 +286,7 @@ const chatObserver = new IntersectionObserver((entries) => {
         addMessage();
         chatObserver.unobserve(chatSection);
     }
-}, { threshold: 0.5 });
+}, { threshold: 0.4 });
 
 if (chatSection) chatObserver.observe(chatSection);
 
@@ -290,8 +311,8 @@ const moneySaved = document.getElementById('money-saved');
 
 if (leadsRange) {
     leadsRange.addEventListener('input', (e) => {
-        const val = e.target.value;
-        leadsValue.textContent = val;
+        const val = parseInt(e.target.value, 10);
+        leadsValue.textContent = val.toLocaleString();
         hoursSaved.textContent = Math.round(val * 0.25);
         moneySaved.textContent = `$${(val * 10).toLocaleString()}`;
     });
@@ -304,7 +325,6 @@ function animateCounter(el) {
     const target = parseInt(el.getAttribute('data-target'), 10);
     const duration = 2000;
     const start = performance.now();
-
     function step(now) {
         const elapsed = now - start;
         const progress = Math.min(elapsed / duration, 1);
@@ -330,7 +350,7 @@ if (counterEls.length) {
 }
 
 // =============================================
-// MOUSE GLOW TRACKER — follows cursor on dark sections
+// MOUSE GLOW TRACKER
 // =============================================
 const glowFollower = document.getElementById('mouse-glow');
 if (glowFollower) {
@@ -341,20 +361,19 @@ if (glowFollower) {
 }
 
 // =============================================
-// SECTION NUMBER PROGRESS
+// SCROLL PROGRESS BAR
 // =============================================
 const progressBar = document.getElementById('scroll-progress');
 if (progressBar) {
     window.addEventListener('scroll', () => {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        progressBar.style.width = scrollPercent + '%';
+        progressBar.style.width = ((scrollTop / docHeight) * 100) + '%';
     });
 }
 
 // =============================================
-// CONTACT FORM — HTTP POST JSON
+// CONTACT FORM
 // =============================================
 const FORM_ENDPOINT = 'https://webhook.site/191b36b4-0982-47ae-92b9-93c2e4489389';
 
@@ -387,21 +406,58 @@ if (contactForm) {
             });
 
             formStatus.style.display = 'block';
-            formStatus.style.background = 'rgba(34, 197, 94, 0.1)';
-            formStatus.style.color = '#16a34a';
-            formStatus.style.border = '1px solid rgba(34,197,94,0.3)';
-            formStatus.textContent = '✓ Solicitud enviada con éxito.';
+            formStatus.style.background = 'rgba(16, 185, 129, 0.1)';
+            formStatus.style.color = '#059669';
+            formStatus.style.border = '1px solid rgba(16,185,129,0.25)';
+            formStatus.textContent = '✓ Solicitud enviada con éxito. Te contactaremos pronto.';
             contactForm.reset();
 
         } catch (err) {
             formStatus.style.display = 'block';
-            formStatus.style.background = 'rgba(239, 68, 68, 0.1)';
+            formStatus.style.background = 'rgba(239, 68, 68, 0.08)';
             formStatus.style.color = '#dc2626';
-            formStatus.style.border = '1px solid rgba(239,68,68,0.3)';
-            formStatus.textContent = '✗ Hubo un error. Escríbenos directamente a johangabriel.cz@gmail.com';
+            formStatus.style.border = '1px solid rgba(239,68,68,0.25)';
+            formStatus.textContent = '✗ Hubo un error. Escríbenos a johangabriel.cz@gmail.com';
         } finally {
             submitBtn.disabled = false;
-            submitBtn.innerHTML = 'Enviar Solicitud <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';
+            submitBtn.innerHTML = 'Enviar solicitud <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';
         }
     });
 }
+
+// =============================================
+// MOBILE NAV OVERLAY STYLES (injected)
+// =============================================
+(function () {
+    const style = document.createElement('style');
+    style.textContent = `
+        @media (max-width: 768px) {
+            .nav-links.mobile-open {
+                display: flex !important;
+                flex-direction: column;
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(2, 6, 23, 0.97);
+                backdrop-filter: blur(20px);
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                z-index: 1999;
+                padding: 2rem;
+            }
+            .nav-links.mobile-open li a {
+                font-size: 1.5rem !important;
+                color: rgba(255,255,255,0.85) !important;
+                font-weight: 700;
+            }
+            .nav-links.mobile-open li a.nav-cta {
+                background: linear-gradient(135deg, #0052FF, #00C2FF);
+                padding: 0.9rem 2.5rem !important;
+                border-radius: 9999px;
+                font-size: 1.1rem !important;
+            }
+            .nav-mobile-toggle { z-index: 2001; position: relative; }
+        }
+    `;
+    document.head.appendChild(style);
+})();
