@@ -82,7 +82,7 @@
    RESET
 ============================================================ */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
     font-family: 'Inter', sans-serif;
@@ -1331,6 +1331,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .steps-note {
     display: flex;
     width: fit-content;
+    max-width: 100%;
     align-items: center;
     gap: 0.6rem;
     margin: 3.5rem auto 0;
@@ -1341,7 +1342,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     border-radius: var(--radius-full);
     font-weight: 700;
     font-size: 0.92rem;
-    white-space: nowrap;
+    text-align: center;
+    line-height: 1.5;
 }
 
 /* ============================================================
@@ -2048,10 +2050,10 @@ footer {
 ============================================================ */
 .whatsapp-float {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 58px;
-    height: 58px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 54px;
+    height: 54px;
     background: linear-gradient(135deg, #22C55E 0%, #16a34a 100%);
     color: white;
     border-radius: 50%;
@@ -2060,21 +2062,26 @@ footer {
     justify-content: center;
     box-shadow: 0 8px 24px rgba(34, 197, 94, 0.42);
     z-index: 2000;
-    transition: var(--transition);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    /* Isolate on its own compositing layer to avoid scroll side-effects */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .whatsapp-float.floating {
-    animation: wpFloat 3s ease-in-out infinite;
+    animation: wpPulse 2.8s ease-in-out infinite;
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 14px 40px rgba(34, 197, 94, 0.6);
+    transform: translateZ(0) scale(1.1);
+    box-shadow: 0 14px 36px rgba(34, 197, 94, 0.58);
 }
 
-@keyframes wpFloat {
-    0%, 100% { box-shadow: 0 8px 24px rgba(34,197,94,0.42); }
-    50% { box-shadow: 0 8px 40px rgba(34,197,94,0.7), 0 0 0 10px rgba(34,197,94,0.07); }
+/* Use transform-based pulse — NOT box-shadow rings which can
+   trigger layout reflow on WebKit/Blink mobile browsers */
+@keyframes wpPulse {
+    0%, 100% { transform: translateZ(0) scale(1); }
+    50%       { transform: translateZ(0) scale(1.07); }
 }
 
 /* ============================================================
@@ -2088,7 +2095,7 @@ footer {
    RESPONSIVE
 ============================================================ */
 @media (max-width: 1100px) {
-    .hero-container { gap: 3.5rem; }
+    .hero-container { gap: 3rem; }
     .founder-grid { gap: 4rem; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
 }
@@ -2096,86 +2103,184 @@ footer {
 @media (max-width: 900px) {
     .hero-container {
         grid-template-columns: 1fr;
-        gap: 4rem;
+        gap: 3.5rem;
         text-align: center;
+        padding: 3.5rem 1.5rem;
     }
-    .hero-content { align-items: center; display: flex; flex-direction: column; }
+    .hero-content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
     .hero-lead { margin-left: auto; margin-right: auto; }
     .hero-actions { justify-content: center; }
     .hero-stats { justify-content: center; }
     .hero-float { display: none; }
-    .product-card { max-width: 380px; }
+
+    .hero-visual { width: 100%; overflow: hidden; }
+    .product-card { max-width: 420px; width: 100%; margin: 0 auto; }
 
     .chat-demo-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .chat-demo-content .section-label { text-align: center; }
+    .chat-demo-content .section-label,
     .chat-demo-content h2 { text-align: center; }
+    .chat-features li { text-align: left; }
 
-    .founder-grid { grid-template-columns: 1fr; gap: 4rem; }
-    .founder-image-wrapper { max-width: 300px; margin: 0 auto; }
+    .founder-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+    .founder-image-wrapper { max-width: 280px; margin: 0 auto; }
     .founder-content { text-align: center; }
     .founder-quote { text-align: left; }
     .founder-skills { justify-content: center; }
     .founder-cta { justify-content: center; }
 
     .contact-card { grid-template-columns: 1fr; }
-    .contact-info { padding: 3.5rem 3rem; }
-    .contact-form { padding: 3rem; }
+    .contact-info { padding: 3.5rem 2.5rem; }
+    .contact-form { padding: 3rem 2.5rem; }
 
-    .solutions-grid { grid-template-columns: 1fr; }
+    .solutions-grid { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; }
     .steps-grid { grid-template-columns: repeat(2, 1fr); }
-    .pain-grid { grid-template-columns: 1fr; }
+    .pain-grid { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; }
 }
 
 @media (max-width: 768px) {
+    /* Nav */
     .nav-links { display: none; }
     .nav-mobile-toggle { display: flex; color: white; }
     #main-nav.nav-light .nav-mobile-toggle { color: var(--text-dark); }
+    #main-nav { padding: 0.75rem 1.25rem; }
 
-    section, .pain-points, .solutions, .chat-demo, .methodology,
+    /* Section padding */
+    .pain-points, .solutions, .chat-demo, .methodology,
     .cases, .founder, .calculator, .faq, .contact {
         padding: 5rem 0 !important;
     }
 
-    .hero { padding-top: 4.5rem; min-height: auto; }
-    .hero-container { padding: 3rem 1.5rem; }
-    .hero-content h1 { font-size: 2.4rem; }
-    .hero-badge { font-size: 0.66rem; }
-    .hero-stats { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+    /* Hero */
+    .hero { padding-top: 4rem; min-height: auto; }
+    .hero-container { padding: 2.5rem 1.5rem 3rem; gap: 3rem; }
+    .hero-content h1 { font-size: 2.6rem; letter-spacing: -0.025em; }
+    .hero-lead { font-size: 1.05rem; max-width: 100%; }
+    .hero-typing { font-size: 0.9rem; }
+    .hero-badge { font-size: 0.68rem; letter-spacing: 0.08em; }
+
+    /* Hero stats */
+    .hero-stats {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        padding-top: 2rem;
+    }
     .stat-divider { display: none; }
-    .stat-item { padding: 0 1rem; }
+    .stat-item { padding: 0; flex: 0 0 calc(33% - 1rem); align-items: center; }
+    .stat-number { font-size: 2rem; }
+    .stat-suffix { font-size: 1.6rem; }
+    .stat-label { font-size: 0.7rem; }
 
-    .section-header { margin-bottom: 3rem; }
-    .section-header h2 { font-size: 1.9rem; }
+    /* Section header */
+    .container { padding: 0 1.5rem; }
+    .section-header { margin-bottom: 2.75rem; }
+    .section-header h2 { font-size: 2rem; }
+    .section-label { font-size: 0.68rem; }
 
+    /* Pain cards */
+    .pain-grid { grid-template-columns: 1fr; max-width: 100%; }
+    .pain-card { padding: 2rem 1.75rem; }
+    .pain-resolve { font-size: 0.88rem; padding: 0.7rem 1.4rem; }
+
+    /* Solutions */
+    .solutions-grid { grid-template-columns: 1fr; max-width: 100%; }
+    .solution-card { padding: 2.25rem 2rem; }
+
+    /* Steps */
     .steps-grid { grid-template-columns: 1fr; }
-    .calc-results { grid-template-columns: 1fr; }
-    .result-sep { display: none; }
-    .result-value { font-size: 2.4rem; }
-    .calc-body, .calc-cta { padding: 2.5rem 2rem; }
+    .step-card { padding: 2rem 1.75rem; }
+    .steps-note { font-size: 0.85rem; padding: 0.7rem 1.4rem; }
 
-    .contact-info { padding: 3rem 2rem; }
-    .contact-form { padding: 2.5rem 2rem; }
+    /* Chat */
+    .chat-demo-content h2 { font-size: 1.8rem; }
+    .chat-content { height: 320px; }
+
+    /* Cases */
+    .cases-grid { flex-direction: column; align-items: stretch; }
+    .case-card { min-width: auto; max-width: 100%; }
+    .case-visual { height: 170px; }
+
+    /* Founder */
+    .founder { padding: 5rem 0 !important; }
+    .founder-name { font-size: 2.4rem; }
+    .founder-quote { font-size: 1rem; }
+    .founder-cta { flex-direction: column; align-items: stretch; }
+    .founder-cta .btn { justify-content: center; width: 100%; }
+
+    /* Calculator */
+    .calculator-card { margin: 0 1.5rem; }
+    .calc-body { padding: 2.5rem 1.75rem; }
+    .calc-cta { padding: 2rem 1.75rem; }
+    .calc-results {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        border-top: 1px solid var(--border-dark);
+        padding-top: 2rem;
+    }
+    .result-sep { display: none; }
+    .result-value { font-size: 2.2rem; }
+    .result-label { font-size: 0.72rem; }
+
+    /* Contact */
+    .contact-info { padding: 2.5rem 1.75rem; }
+    .contact-form { padding: 2.25rem 1.75rem; }
     .form-row { grid-template-columns: 1fr; }
 
+    /* Footer */
     .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .footer-inner { padding: 4rem 1.5rem 2.5rem; }
     .footer-bottom { flex-direction: column; gap: 1.25rem; text-align: center; }
-
-    .cases-grid { flex-direction: column; }
-    .case-card { min-width: auto; max-width: 100%; }
-
-    .founder-name { font-size: 2.4rem; }
-    .founder-cta { flex-direction: column; align-items: stretch; }
-    .founder-cta .btn { justify-content: center; }
-
-    .container { padding: 0 1.25rem; }
+    .footer-bottom-links { justify-content: center; }
 }
 
 @media (max-width: 480px) {
-    .hero-content h1 { font-size: 2rem; }
+    .container { padding: 0 1.25rem; }
+
+    .hero-container { padding: 2rem 1.25rem 2.5rem; }
+    .hero-content h1 { font-size: 2.1rem; }
+    .hero-lead { font-size: 1rem; }
     .hero-actions { flex-direction: column; width: 100%; }
     .hero-actions .btn { justify-content: center; width: 100%; }
+    .hero-stats { gap: 1.25rem; }
+    .stat-item { flex: 0 0 calc(33% - 0.85rem); }
+    .stat-number { font-size: 1.7rem; }
+
+    /* product card on very small phones */
+    .product-card-chat { min-height: 160px; }
+
+    .section-header h2 { font-size: 1.75rem; }
+
+    .pain-card { padding: 1.75rem 1.5rem; }
+    .solution-card { padding: 2rem 1.5rem; }
+    .step-card { padding: 1.75rem 1.5rem; }
+    .step-number { font-size: 2rem; }
+
+    .calc-body { padding: 2rem 1.5rem; }
+    .calc-cta { padding: 1.75rem 1.5rem; }
+    .result-value { font-size: 1.9rem; }
     .btn-lg { width: 100%; justify-content: center; }
-    .solution-card { padding: 2rem 1.75rem; }
-    .pain-card { padding: 2rem; }
+
+    .case-body { padding: 1.75rem 1.5rem; }
+
+    .contact-info { padding: 2rem 1.5rem; }
+    .contact-form { padding: 2rem 1.5rem; }
+
+    .founder-name { font-size: 2rem; }
+    .founder-quote { font-size: 0.95rem; }
+    .founder-skills { gap: 0.5rem; }
+    .skill-badge { font-size: 0.74rem; padding: 0.4rem 0.9rem; }
+
+    .footer-grid { gap: 2rem; }
+    .footer-inner { padding: 3.5rem 1.25rem 2rem; }
+    .footer-col-brand p { max-width: 100%; }
+    .calculator-card { margin: 0 1.25rem; }
+
+    .faq-question { padding: 1.35rem 1.5rem; }
+    .faq-answer { padding: 0 1.5rem; }
+    .faq-item.active .faq-answer { padding: 0 1.5rem 1.5rem; }
 }
