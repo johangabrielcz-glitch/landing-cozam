@@ -122,22 +122,27 @@ const mobileToggle = document.querySelector('.nav-mobile-toggle');
 const navLinks = document.querySelector('.nav-links');
 
 if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', () => {
-        const isOpen = navLinks.classList.contains('mobile-open');
-        navLinks.classList.toggle('mobile-open', !isOpen);
-        mobileToggle.innerHTML = isOpen
-            ? '<i data-lucide="menu"></i>'
-            : '<i data-lucide="x"></i>';
+    function openMenu() {
+        navLinks.classList.add('mobile-open');
+        nav.classList.add('menu-open');
+        mobileToggle.innerHTML = '<i data-lucide="x"></i>';
         lucide.createIcons();
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+        navLinks.classList.remove('mobile-open');
+        nav.classList.remove('menu-open');
+        mobileToggle.innerHTML = '<i data-lucide="menu"></i>';
+        lucide.createIcons();
+        document.body.style.overflow = '';
+    }
+
+    mobileToggle.addEventListener('click', () => {
+        navLinks.classList.contains('mobile-open') ? closeMenu() : openMenu();
     });
 
-    // Close mobile menu on link click
     navLinks.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-            navLinks.classList.remove('mobile-open');
-            mobileToggle.innerHTML = '<i data-lucide="menu"></i>';
-            lucide.createIcons();
-        });
+        a.addEventListener('click', closeMenu);
     });
 }
 
@@ -373,91 +378,34 @@ if (progressBar) {
 }
 
 // =============================================
-// CONTACT FORM
+// CONTACT FORM → WhatsApp
 // =============================================
-const FORM_ENDPOINT = 'https://webhook.site/191b36b4-0982-47ae-92b9-93c2e4489389';
-
+const WA_NUMBER = '584124779301';
 const contactForm = document.getElementById('contact-form');
-const submitBtn = document.getElementById('form-submit-btn');
-const formStatus = document.getElementById('form-status');
+const submitBtn  = document.getElementById('form-submit-btn');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
+    contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const payload = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            interest: document.getElementById('interest').value,
-            message: contactForm.querySelector('textarea[name="message"]').value,
-            timestamp: new Date().toISOString()
-        };
+        const name     = document.getElementById('name').value.trim();
+        const email    = document.getElementById('email').value.trim();
+        const interestEl = document.getElementById('interest');
+        const interest = interestEl.selectedIndex > 0
+            ? interestEl.options[interestEl.selectedIndex].text
+            : 'No especificado';
+        const message  = contactForm.querySelector('textarea[name="message"]').value.trim();
 
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Enviando...</span>';
-        formStatus.style.display = 'none';
+        const lines = [
+            '👋 Hola COZAM, les escribo desde su página web.',
+            '',
+            `*Nombre:* ${name}`,
+            `*Email:* ${email}`,
+            `*Me interesa:* ${interest}`,
+        ];
+        if (message) lines.push(`*Mensaje:* ${message}`);
 
-        try {
-            await fetch(FORM_ENDPOINT, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            formStatus.style.display = 'block';
-            formStatus.style.background = 'rgba(16, 185, 129, 0.1)';
-            formStatus.style.color = '#059669';
-            formStatus.style.border = '1px solid rgba(16,185,129,0.25)';
-            formStatus.textContent = '✓ Solicitud enviada con éxito. Te contactaremos pronto.';
-            contactForm.reset();
-
-        } catch (err) {
-            formStatus.style.display = 'block';
-            formStatus.style.background = 'rgba(239, 68, 68, 0.08)';
-            formStatus.style.color = '#dc2626';
-            formStatus.style.border = '1px solid rgba(239,68,68,0.25)';
-            formStatus.textContent = '✗ Hubo un error. Escríbenos a johangabriel.cz@gmail.com';
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = 'Enviar solicitud <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';
-        }
+        const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
     });
 }
-
-// =============================================
-// MOBILE NAV OVERLAY STYLES (injected)
-// =============================================
-(function () {
-    const style = document.createElement('style');
-    style.textContent = `
-        @media (max-width: 768px) {
-            .nav-links.mobile-open {
-                display: flex !important;
-                flex-direction: column;
-                position: fixed;
-                top: 0; left: 0; right: 0; bottom: 0;
-                background: rgba(2, 6, 23, 0.97);
-                backdrop-filter: blur(20px);
-                align-items: center;
-                justify-content: center;
-                gap: 2rem;
-                z-index: 1999;
-                padding: 2rem;
-            }
-            .nav-links.mobile-open li a {
-                font-size: 1.5rem !important;
-                color: rgba(255,255,255,0.85) !important;
-                font-weight: 700;
-            }
-            .nav-links.mobile-open li a.nav-cta {
-                background: linear-gradient(135deg, #0052FF, #00C2FF);
-                padding: 0.9rem 2.5rem !important;
-                border-radius: 9999px;
-                font-size: 1.1rem !important;
-            }
-            .nav-mobile-toggle { z-index: 2001; position: relative; }
-        }
-    `;
-    document.head.appendChild(style);
-})();

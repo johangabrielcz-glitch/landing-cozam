@@ -2142,11 +2142,74 @@ footer {
 }
 
 @media (max-width: 768px) {
-    /* Nav */
+    /* Nav — base */
     .nav-links { display: none; }
     .nav-mobile-toggle { display: flex; color: white; }
     #main-nav.nav-light .nav-mobile-toggle { color: var(--text-dark); }
     #main-nav { padding: 0.75rem 1.25rem; }
+
+    /* Nav — menú abierto: convertir el nav entero en overlay fullscreen */
+    #main-nav.menu-open {
+        inset: 0;            /* top/right/bottom/left: 0 */
+        padding: 0;
+        z-index: 9999;
+    }
+    #main-nav.menu-open .nav-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        padding: 0;
+        background: rgba(2, 6, 23, 0.97) !important;
+        backdrop-filter: blur(24px) !important;
+        -webkit-backdrop-filter: blur(24px) !important;
+        border: none !important;
+        box-shadow: none !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        position: relative;
+    }
+    /* Logo y botón X fijos arriba mientras el menú está abierto */
+    #main-nav.menu-open .nav-logo {
+        position: absolute;
+        top: 1.4rem;
+        left: 1.5rem;
+    }
+    #main-nav.menu-open .nav-mobile-toggle {
+        position: absolute;
+        top: 1.3rem;
+        right: 1.25rem;
+        color: white;
+        z-index: 1;
+    }
+    /* Lista de links visible y centrada */
+    .nav-links.mobile-open {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+    }
+    .nav-links.mobile-open li a {
+        display: block;
+        font-size: 1.6rem !important;
+        color: rgba(255, 255, 255, 0.78) !important;
+        font-weight: 700;
+        padding: 0.6rem 2rem !important;
+        border-radius: var(--radius-full);
+        letter-spacing: -0.01em;
+        transition: color 0.2s;
+    }
+    .nav-links.mobile-open li a:hover,
+    .nav-links.mobile-open li a:active { color: white !important; }
+    .nav-links.mobile-open li a.nav-cta {
+        background: var(--grad-brand) !important;
+        color: white !important;
+        padding: 0.85rem 2.5rem !important;
+        font-size: 1.2rem !important;
+        margin-top: 1.25rem !important;
+        box-shadow: 0 8px 32px var(--blue-glow);
+    }
 
     /* Section padding */
     .pain-points, .solutions, .chat-demo, .methodology,
