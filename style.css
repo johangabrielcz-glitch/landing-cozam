@@ -1504,6 +1504,37 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     transition: var(--transition-slow);
 }
 
+.founder-avatar-placeholder {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(145deg, var(--dark-4) 0%, var(--dark-3) 100%);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    color: rgba(255, 255, 255, 0.25);
+    transition: var(--transition-slow);
+}
+
+.founder-avatar-placeholder i {
+    opacity: 0.35;
+    color: var(--cyan);
+}
+
+.founder-avatar-placeholder span {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.22);
+}
+
 .founder-image:hover {
     transform: scale(1.02);
     box-shadow: 0 50px 100px rgba(0, 82, 255, 0.2), 0 0 0 1px rgba(0, 194, 255, 0.2);
